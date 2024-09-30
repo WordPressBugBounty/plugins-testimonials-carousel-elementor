@@ -13,7 +13,7 @@ function get_default_creative_template($settings, $attributes)
         foreach ($settings['slide'] as $item) {
           $alt = $item['slide_image']['alt'] ?? '' ?>
           <div class="swiper-slide" id="slide-<?php echo esc_attr($counter); ?>">
-            <?php if ($item['slide_image']['url']) { ?>
+            <?php if (isset($item['slide_image'], $item['slide_image']['url']) && !empty($item['slide_image']['url'])) { ?>
               <img src="<?php echo esc_url($item['slide_image']['url']); ?>"
                    alt="<?php echo esc_attr($alt); ?>">
             <?php } ?>

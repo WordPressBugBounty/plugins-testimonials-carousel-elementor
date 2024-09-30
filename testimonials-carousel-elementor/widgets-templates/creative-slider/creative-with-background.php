@@ -16,7 +16,7 @@ function get_creative_with_background_template($settings, $attributes)
           <?php $counter = 1;
           foreach ($settings['creative_with_background'] as $item) { ?>
             <div class="swiper-slide" id="slide-<?php echo esc_attr($counter); ?>">
-              <?php if ($item['creative_with_background_image']['url']) { ?>
+              <?php if (isset($item['creative_with_background_image'], $item['creative_with_background_image']['url']) && !empty($item['creative_with_background_image']['url'])) { ?>
                 <img src="<?php echo esc_url($item['creative_with_background_image']['url']); ?>"
                      alt="<?php echo esc_attr($item['creative_with_background_image']['alt']); ?>">
               <?php } ?>

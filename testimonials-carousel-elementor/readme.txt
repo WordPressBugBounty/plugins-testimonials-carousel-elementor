@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: elementor, elementor addons, testimonial slider, testimonial carousel, carousel
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.6.1
-Stable tag: 11.3.0
+Tested up to: 6.6.2
+Stable tag: 11.3.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -74,6 +74,9 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 23. Reviews testimonial carousel settings
 
 == Changelog ==
+
+= 11.3.1 - 2024-09-25 =
+- Fix: Fixed and added new conditions for all widgets.
 
 = 11.3.0 - 2024-09-04 =
 - New: Added new controls to disable images in widgets.
