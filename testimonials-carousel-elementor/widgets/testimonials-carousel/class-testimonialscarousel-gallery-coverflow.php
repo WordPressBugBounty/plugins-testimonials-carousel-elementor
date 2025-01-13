@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.3.1
+ * @since      11.4.0
  * php version 7.4.1
  */
 
@@ -32,7 +32,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Coverflow widget class.
  *
- * @since 11.3.1
+ * @since 11.4.0
  */
 class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
 {
@@ -68,7 +68,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -82,7 +82,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -96,7 +96,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -115,7 +115,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -165,7 +165,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access protected
    */
@@ -591,6 +591,25 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
         'type'               => Controls_Manager::NUMBER,
         'default'            => 5000,
         'frontend_available' => true,
+        'condition'          => [
+          'autoplay' => 'yes',
+        ]
+      ]
+    );
+
+    $this->add_control(
+      'disable_interaction',
+      [
+        'label'              => esc_html__('Disable On Interaction', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SWITCHER,
+        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+        'label_off'          => __('No', 'testimonials-carousel-elementor'),
+        'return_value'       => 'yes',
+        'default'            => 'yes',
+        'frontend_available' => true,
+        'condition'          => [
+          'autoplay' => 'yes',
+        ]
       ]
     );
 
@@ -1401,12 +1420,249 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
         'tab'   => Controls_Manager::TAB_STYLE,
       ]
     );
+
+    $this->add_control(
+      'popup_position',
+      [
+        'label'              => esc_html__('Position', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SELECT,
+        'default'            => '',
+        'options'            => [
+          ''         => esc_html__('Default', 'testimonials-carousel-elementor'),
+          'absolute' => esc_html__('Absolute', 'testimonials-carousel-elementor'),
+          'fixed'    => esc_html__('Fixed', 'testimonials-carousel-elementor'),
+        ],
+        'selectors'          => [
+          '{{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'position: {{VALUE}};',
+        ],
+        'frontend_available' => true,
+      ]
+    );
+
+    $left  = esc_html__('Left', 'testimonials-carousel-elementor');
+    $right = esc_html__('Right', 'testimonials-carousel-elementor');
+
+    $start = is_rtl() ? $right : $left;
+    $end   = !is_rtl() ? $right : $left;
+
+    $this->add_control(
+      '_offset_popup_orientation_h',
+      [
+        'label'       => esc_html__('Horizontal Orientation', 'testimonials-carousel-elementor'),
+        'type'        => Controls_Manager::CHOOSE,
+        'toggle'      => false,
+        'default'     => 'start',
+        'options'     => [
+          'start' => [
+            'title' => $start,
+            'icon'  => 'eicon-h-align-left',
+          ],
+          'end'   => [
+            'title' => $end,
+            'icon'  => 'eicon-h-align-right',
+          ],
+        ],
+        'classes'     => 'elementor-control-start-end',
+        'render_type' => 'ui',
+        'condition'   => [
+          'popup_position!' => '',
+        ],
+      ]
+    );
+
+    $this->add_responsive_control(
+      '_offset_popup_x',
+      [
+        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+        'type'       => Controls_Manager::SLIDER,
+        'range'      => [
+          'px' => [
+            'min' => -1000,
+            'max' => 1000,
+          ],
+          '%'  => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vw' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vh' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+        ],
+        'default'    => [
+          'size' => 0,
+        ],
+        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
+        'selectors'  => [
+          'body:not(.rtl) {{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'left: {{SIZE}}{{UNIT}}',
+          'body.rtl {{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal'       => 'right: {{SIZE}}{{UNIT}}',
+        ],
+        'condition'  => [
+          '_offset_popup_orientation_h!' => 'end',
+          'popup_position!'              => '',
+        ],
+      ]
+    );
+
+    $this->add_responsive_control(
+      '_offset_popup_x_end',
+      [
+        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+        'type'       => Controls_Manager::SLIDER,
+        'range'      => [
+          'px' => [
+            'min' => -1000,
+            'max' => 1000,
+          ],
+          '%'  => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vw' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vh' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+        ],
+        'default'    => [
+          'size' => 0,
+        ],
+        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
+        'selectors'  => [
+          'body:not(.rtl) {{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'right: {{SIZE}}{{UNIT}}',
+          'body.rtl {{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal'       => 'left: {{SIZE}}{{UNIT}}',
+        ],
+        'condition'  => [
+          '_offset_popup_orientation_h' => 'end',
+          'popup_position!'             => '',
+        ],
+      ]
+    );
+
+    $this->add_control(
+      '_offset_popup_orientation_v',
+      [
+        'label'       => esc_html__('Vertical Orientation', 'testimonials-carousel-elementor'),
+        'type'        => Controls_Manager::CHOOSE,
+        'toggle'      => false,
+        'default'     => 'start',
+        'options'     => [
+          'start' => [
+            'title' => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'icon'  => 'eicon-v-align-top',
+          ],
+          'end'   => [
+            'title' => esc_html__('Bottom', 'testimonials-carousel-elementor'),
+            'icon'  => 'eicon-v-align-bottom',
+          ],
+        ],
+        'render_type' => 'ui',
+        'condition'   => [
+          'popup_position!' => '',
+        ],
+      ]
+    );
+
+    $this->add_responsive_control(
+      '_offset_popup_y',
+      [
+        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+        'type'       => Controls_Manager::SLIDER,
+        'range'      => [
+          'px' => [
+            'min' => -1000,
+            'max' => 1000,
+          ],
+          '%'  => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vh' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vw' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+        ],
+        'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
+        'default'    => [
+          'size' => 0,
+        ],
+        'selectors'  => [
+          '{{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'top: {{SIZE}}{{UNIT}}',
+        ],
+        'condition'  => [
+          '_offset_popup_orientation_v!' => 'end',
+          'popup_position!'              => '',
+        ],
+      ]
+    );
+
+    $this->add_responsive_control(
+      '_offset_popup_y_end',
+      [
+        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+        'type'       => Controls_Manager::SLIDER,
+        'range'      => [
+          'px' => [
+            'min' => -1000,
+            'max' => 1000,
+          ],
+          '%'  => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vh' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+          'vw' => [
+            'min' => -200,
+            'max' => 200,
+          ],
+        ],
+        'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
+        'default'    => [
+          'size' => 0,
+        ],
+        'selectors'  => [
+          '{{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'bottom: {{SIZE}}{{UNIT}}',
+        ],
+        'condition'  => [
+          '_offset_popup_orientation_v' => 'end',
+          'popup_position!'             => '',
+        ],
+      ]
+    );
+
+    $this->add_responsive_control(
+      'popup_z_index',
+      [
+        'label'     => esc_html__('Z-Index', 'testimonials-carousel-elementor'),
+        'type'      => Controls_Manager::NUMBER,
+        'min'       => 0,
+        'selectors' => [
+          '{{WRAPPER}} .mySwiperGalleryCoverflow-modal#slider-modal' => 'z-index: {{VALUE}};',
+        ],
+      ]
+    );
+
     $this->add_group_control(
       Group_Control_Background::get_type(),
       [
         'name'     => 'popup_background',
         'types'    => ['classic', 'gradient'],
         'selector' => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-block-background',
+        'separator' => 'before',
       ]
     );
     $this->add_responsive_control(
@@ -1848,7 +2104,7 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access protected
    */
@@ -1859,24 +2115,25 @@ class TestimonialsCarousel_Gallery_Coverflow extends Widget_Base
       $this->add_render_attribute(
         'my_swiper',
         [
-          'class'                             => ['slider-params'],
-          'data-slidestoshow-myswiper'        => esc_attr($settings['slides_to_show']),
-          'data-slidestoshow-myswiper-tablet' => esc_attr($settings['slides_to_show_tablet']),
-          'data-slidestoshow-myswiper-mobile' => esc_attr($settings['slides_to_show_mobile']),
-          'data-direction-myswiper'           => esc_attr($settings['direction']),
-          'data-direction-myswiper-tablet'    => esc_attr($settings['direction_tablet']),
-          'data-direction-myswiper-mobile'    => esc_attr($settings['direction_mobile']),
-          'data-navigation-myswiper'          => esc_attr($settings['navigation']),
-          'data-autoplay-myswiper'            => esc_attr($settings['autoplay']),
-          'data-speed-myswiper'               => esc_attr($settings['slider_speed']),
-          'data-autoplayspeed-myswiper'       => esc_attr($settings['autoplay_speed']),
-          'data-rotate-myswiper'              => esc_attr($settings['slide_rotate']),
-          'data-stretch-myswiper'             => esc_attr($settings['slide_stretch']),
-          'data-depth-myswiper'               => esc_attr($settings['slide_depth']),
-          'data-modifier-myswiper'            => esc_attr($settings['slide_modifier']),
-          'data-slideshadows-myswiper'        => esc_attr($settings['slide_shadows']),
-          'data-controller-myswiper'          => esc_attr($settings['controller']),
-          'data-showlinetext-myswiper'        => esc_attr($settings['show_line_text']),
+          'class'                                    => ['slider-params'],
+          'data-slidestoshow-myswiper'               => esc_attr($settings['slides_to_show']),
+          'data-slidestoshow-myswiper-tablet'        => esc_attr($settings['slides_to_show_tablet']),
+          'data-slidestoshow-myswiper-mobile'        => esc_attr($settings['slides_to_show_mobile']),
+          'data-direction-myswiper'                  => esc_attr($settings['direction']),
+          'data-direction-myswiper-tablet'           => esc_attr($settings['direction_tablet']),
+          'data-direction-myswiper-mobile'           => esc_attr($settings['direction_mobile']),
+          'data-navigation-myswiper'                 => esc_attr($settings['navigation']),
+          'data-autoplay-myswiper'                   => esc_attr($settings['autoplay']),
+          'data-speed-myswiper'                      => esc_attr($settings['slider_speed']),
+          'data-autoplayspeed-myswiper'              => esc_attr($settings['autoplay_speed']),
+          'data-rotate-myswiper'                     => esc_attr($settings['slide_rotate']),
+          'data-stretch-myswiper'                    => esc_attr($settings['slide_stretch']),
+          'data-depth-myswiper'                      => esc_attr($settings['slide_depth']),
+          'data-modifier-myswiper'                   => esc_attr($settings['slide_modifier']),
+          'data-slideshadows-myswiper'               => esc_attr($settings['slide_shadows']),
+          'data-controller-myswiper'                 => esc_attr($settings['controller']),
+          'data-showlinetext-myswiper'               => esc_attr($settings['show_line_text']),
+          'data-sliderdisableoninteraction-myswiper' => esc_attr($settings['disable_interaction']),
         ]
       );
     }

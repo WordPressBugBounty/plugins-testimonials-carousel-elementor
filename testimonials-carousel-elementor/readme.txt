@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: elementor, elementor addons, testimonial slider, testimonial carousel, carousel
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.6.2
-Stable tag: 11.3.1
+Tested up to: 6.7.1
+Stable tag: 11.4.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -74,6 +74,11 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 23. Reviews testimonial carousel settings
 
 == Changelog ==
+
+= 11.4.0 - 2025-01-13 =
+- New: Added controls for styling the "Read more" button for Testimonials Carousel with Thumbnails.
+- New: Added controls for positioning the pop-up for widgets.
+- New: Added controls for configuring "disableOnInteraction".
 
 = 11.3.1 - 2024-09-25 =
 - Fix: Fixed and added new conditions for all widgets.

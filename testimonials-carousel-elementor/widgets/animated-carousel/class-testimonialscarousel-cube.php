@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.3.1
+ * @since      11.4.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Cube widget class.
  *
- * @since 11.3.1
+ * @since 11.4.0
  */
 class TestimonialsCarousel_Cube extends Widget_Base
 {
@@ -66,7 +66,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -80,7 +80,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -94,7 +94,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -113,7 +113,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access public
    *
@@ -163,7 +163,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access protected
    */
@@ -464,6 +464,25 @@ class TestimonialsCarousel_Cube extends Widget_Base
         'min'                => 1,
         'default'            => 1,
         'frontend_available' => true,
+        'condition'          => [
+          'autoplay' => 'yes',
+        ]
+      ]
+    );
+
+    $this->add_control(
+      'disable_interaction',
+      [
+        'label'              => esc_html__('Disable On Interaction', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SWITCHER,
+        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+        'label_off'          => __('No', 'testimonials-carousel-elementor'),
+        'return_value'       => 'yes',
+        'default'            => 'yes',
+        'frontend_available' => true,
+        'condition'          => [
+          'autoplay' => 'yes',
+        ]
       ]
     );
 
@@ -845,7 +864,7 @@ class TestimonialsCarousel_Cube extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.3.1
+   * @since  11.4.0
    *
    * @access protected
    */
@@ -856,15 +875,16 @@ class TestimonialsCarousel_Cube extends Widget_Base
       $this->add_render_attribute(
         'my_swiper',
         [
-          'class'                                => ['slider-params'],
-          'data-speed-myswiper'                  => esc_attr($settings['slider_speed']),
-          'data-autoplayspeed-myswiper'          => esc_attr($settings['autoplay_speed']),
-          'data-sliderrotate-myswiper'           => esc_attr($settings['slider_rotate']),
-          'data-slidershadowoffset-myswiper'     => esc_attr($settings['slider_shadow_offset']),
-          'data-slidershadowscale-myswiper'      => esc_attr($settings['slider_shadow_scale']),
-          'data-sliderpausemouse-myswiper'       => esc_attr($settings['slider_pause_mouse_enter']),
-          'data-sliderrevercedirection-myswiper' => esc_attr($settings['slider_reverse_direction']),
-          'data-slideshadows-myswiper'           => esc_attr($settings['slide_shadows']),
+          'class'                                    => ['slider-params'],
+          'data-speed-myswiper'                      => esc_attr($settings['slider_speed']),
+          'data-autoplayspeed-myswiper'              => esc_attr($settings['autoplay_speed']),
+          'data-sliderrotate-myswiper'               => esc_attr($settings['slider_rotate']),
+          'data-slidershadowoffset-myswiper'         => esc_attr($settings['slider_shadow_offset']),
+          'data-slidershadowscale-myswiper'          => esc_attr($settings['slider_shadow_scale']),
+          'data-sliderpausemouse-myswiper'           => esc_attr($settings['slider_pause_mouse_enter']),
+          'data-sliderrevercedirection-myswiper'     => esc_attr($settings['slider_reverse_direction']),
+          'data-slideshadows-myswiper'               => esc_attr($settings['slide_shadows']),
+          'data-sliderdisableoninteraction-myswiper' => esc_attr($settings['disable_interaction']),
         ]
       );
     }
