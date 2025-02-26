@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, testimonial slider, testimonial carousel, car
 Requires PHP: 7.4.1
 Requires at least: 5.9
 Tested up to: 6.7.1
-Stable tag: 11.4.0
+Stable tag: 11.4.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -12,8 +12,10 @@ The compact Testimonial Carousel for Elementor lets you show long text reviews i
 
 == Description ==
 
+[Live Demo](https://prokitelementor.com/live-demo) | [Upgrade to Pro!](https://prokitelementor.com/#pricing)
+
 The compact Testimonial Carousel for Elementor lets you show long text reviews in Pop-Up of Carousel Slider. Now you can easily show your long reviews using this plugin to your users as a Pop-Up from the Review Card. But without overloading the site with long texts.
-The plugin has many features and settings to customize the reviews to suit your needs.
+The plugin has many features and settings to customize the reviews to suit your needs. Upgrade to PRO and unlock new possibilities with [Pro Kit for Elementor!](https://prokitelementor.com)
 
 ### COMMON FEATURES
 
@@ -74,6 +76,9 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 23. Reviews testimonial carousel settings
 
 == Changelog ==
+
+= 11.4.1 - 2025-02-26 =
+- Modified: Changed plugin description.
 
 = 11.4.0 - 2025-01-13 =
 - New: Added controls for styling the "Read more" button for Testimonials Carousel with Thumbnails.
