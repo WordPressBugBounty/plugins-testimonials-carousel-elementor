@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.4.0
+ * @since      11.5.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Creative widget class.
  *
- * @since 11.4.0
+ * @since 11.5.0
  */
 class TestimonialsCarousel_Creative extends Widget_Base
 {
@@ -65,7 +65,7 @@ class TestimonialsCarousel_Creative extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -79,7 +79,7 @@ class TestimonialsCarousel_Creative extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -93,7 +93,7 @@ class TestimonialsCarousel_Creative extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -112,7 +112,7 @@ class TestimonialsCarousel_Creative extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -172,11 +172,11 @@ class TestimonialsCarousel_Creative extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access protected
    */
-  protected function _register_controls()
+  protected function register_controls()
   {
     // Content Section
     $this->start_controls_section(
@@ -236,6 +236,19 @@ class TestimonialsCarousel_Creative extends Widget_Base
       'section_additional_options',
       [
         'label' => esc_html__('Additional Options', 'testimonials-carousel-elementor'),
+      ]
+    );
+
+    $this->add_control(
+      'slider_random',
+      [
+        'label'              => esc_html__('Random Order', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SWITCHER,
+        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+        'label_off'          => __('No', 'testimonials-carousel-elementor'),
+        'return_value'       => 'yes',
+        'default'            => 'no',
+        'frontend_available' => true,
       ]
     );
 
@@ -417,7 +430,7 @@ class TestimonialsCarousel_Creative extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access protected
    */

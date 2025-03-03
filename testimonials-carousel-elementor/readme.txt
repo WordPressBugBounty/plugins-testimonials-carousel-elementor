@@ -3,8 +3,8 @@ Contributors: uapp
 Tags: elementor, elementor addons, testimonial slider, testimonial carousel, carousel
 Requires PHP: 7.4.1
 Requires at least: 5.9
-Tested up to: 6.7.1
-Stable tag: 11.4.1
+Tested up to: 6.7.2
+Stable tag: 11.5.0
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -76,6 +76,11 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 23. Reviews testimonial carousel settings
 
 == Changelog ==
+
+= 11.5.0 - 2025-03-03 =
+- New: Added a new control to change the random order of elements in widgets.
+- Change: Changed the role in lists in widgets.
+- Security Fix: Update deprecated code.
 
 = 11.4.1 - 2025-02-26 =
 - Modified: Changed plugin description.

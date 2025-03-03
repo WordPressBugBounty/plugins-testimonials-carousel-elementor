@@ -2,9 +2,18 @@
 
 function get_creative_with_background_template($settings, $attributes)
 {
+  $slide = $settings['creative_with_background'];
+
   if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
     <div <?php echo $attributes; ?>></div>
-  <?php } ?>
+  <?php }
+
+  if ($settings['slider_random'] === 'yes') {
+    $keys = array_keys($slide);
+    shuffle($keys);
+    $slide = array_map(fn($key) => $slide[$key], $keys);
+  }
+  ?>
 
   <section class="creative creative-with-background"
     <?php if ($settings['creative_with_background_image_enable'] === 'yes') { ?>
@@ -14,7 +23,7 @@ function get_creative_with_background_template($settings, $attributes)
       <div class="swiper mySwiper mySwiperCreative">
         <div class="swiper-wrapper">
           <?php $counter = 1;
-          foreach ($settings['creative_with_background'] as $item) { ?>
+          foreach ($slide as $item) { ?>
             <div class="swiper-slide" id="slide-<?php echo esc_attr($counter); ?>">
               <?php if (isset($item['creative_with_background_image'], $item['creative_with_background_image']['url']) && !empty($item['creative_with_background_image']['url'])) { ?>
                 <img src="<?php echo esc_url($item['creative_with_background_image']['url']); ?>"
@@ -29,7 +38,7 @@ function get_creative_with_background_template($settings, $attributes)
       <?php if ($settings['creative_with_background_content_enable'] === 'yes') { ?>
         <div class="creative__wrapper-content">
           <?php $counter_content = 1;
-          foreach ($settings['creative_with_background'] as $item_content) { ?>
+          foreach ($slide as $item_content) { ?>
             <div class="creative__slide-content <?php if ($counter_content === 1) { ?> active <?php } ?>"
                  data-id="slide-<?php echo esc_attr($counter_content); ?>">
               <?php if ($item_content['creative_with_background_title_enable'] === 'yes' || $item_content['creative_with_background_subtitle_enable'] === 'yes') { ?>

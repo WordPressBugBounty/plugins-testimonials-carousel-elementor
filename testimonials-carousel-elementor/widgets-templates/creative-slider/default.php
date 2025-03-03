@@ -2,15 +2,24 @@
 
 function get_default_creative_template($settings, $attributes)
 {
+  $slide = $settings['slide'];
+
   if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
     <div <?php echo $attributes; ?>></div>
-  <?php } ?>
+  <?php }
+
+  if ($settings['slider_random'] === 'yes') {
+    $keys = array_keys($slide);
+    shuffle($keys);
+    $slide = array_map(fn($key) => $slide[$key], $keys);
+  }
+  ?>
 
   <section class="creative">
     <div class="swiper mySwiper mySwiperCreative">
       <div class="swiper-wrapper">
         <?php $counter = 1;
-        foreach ($settings['slide'] as $item) {
+        foreach ($slide as $item) {
           $alt = $item['slide_image']['alt'] ?? '' ?>
           <div class="swiper-slide" id="slide-<?php echo esc_attr($counter); ?>">
             <?php if (isset($item['slide_image'], $item['slide_image']['url']) && !empty($item['slide_image']['url'])) { ?>
@@ -26,7 +35,7 @@ function get_default_creative_template($settings, $attributes)
     <?php if ($settings['creative_content_enable'] === 'yes') { ?>
       <div class="creative__wrapper-content">
         <?php $counter_content = 1;
-        foreach ($settings['slide'] as $item_content) { ?>
+        foreach ($slide as $item_content) { ?>
           <div class="creative__slide-content <?php if ($counter_content === 1) { ?> active <?php } ?>"
                data-id="slide-<?php echo esc_attr($counter_content); ?>">
             <?php if ($item_content['slide_title_enable'] === 'yes') { ?>

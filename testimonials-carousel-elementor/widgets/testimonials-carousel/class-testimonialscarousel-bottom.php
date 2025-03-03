@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.4.0
+ * @since      11.5.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Bottom widget class.
  *
- * @since 11.4.0
+ * @since 11.5.0
  */
 class TestimonialsCarousel_Bottom extends Widget_Base
 {
@@ -65,7 +65,7 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -79,7 +79,7 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -93,7 +93,7 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -112,7 +112,7 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access public
    *
@@ -162,11 +162,11 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access protected
    */
-  protected function _register_controls()
+  protected function register_controls()
   {
     // Content Section
     $this->start_controls_section(
@@ -363,6 +363,19 @@ class TestimonialsCarousel_Bottom extends Widget_Base
 
     $slides_to_show = range(1, 4);
     $slides_to_show = array_combine($slides_to_show, $slides_to_show);
+
+    $this->add_control(
+      'slider_random',
+      [
+        'label'              => esc_html__('Random Order', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SWITCHER,
+        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+        'label_off'          => __('No', 'testimonials-carousel-elementor'),
+        'return_value'       => 'yes',
+        'default'            => 'no',
+        'frontend_available' => true,
+      ]
+    );
 
     $this->add_responsive_control(
       'slides_to_show',
@@ -1724,13 +1737,15 @@ class TestimonialsCarousel_Bottom extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.4.0
+   * @since  11.5.0
    *
    * @access protected
    */
   protected function render()
   {
     $settings = $this->get_settings_for_display();
+    $slide    = $settings['slide'];
+
     if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") {
       $this->add_render_attribute(
         'my_swiper',
@@ -1752,18 +1767,24 @@ class TestimonialsCarousel_Bottom extends Widget_Base
       );
     }
 
-    if ($settings['slide']) {
+    if ($slide) {
       if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") { ?>
         <div <?php echo $this->get_render_attribute_string('my_swiper'); ?>></div>
-      <?php } ?>
+      <?php }
+
+      if ($settings['slider_random'] === 'yes') {
+        $keys = array_keys($slide);
+        shuffle($keys);
+        $slide = array_map(fn($key) => $slide[$key], $keys);
+      }
+      ?>
 
       <section class="swiper mySwiper myTestimonials mySwiperBottom <?php if (
         esc_attr($settings['navigation']) === "dots"
         || esc_attr($settings['navigation']) === "none"
       ) { ?>slider-arrows-disabled<?php } ?>">
-        <ul class="swiper-wrapper">
-          <?php
-          foreach ($settings['slide'] as $item) { ?>
+        <ul class="swiper-wrapper" role="list">
+          <?php foreach ($slide as $item) { ?>
             <li class="swiper-slide slider-container-background">
               <div class="block-shadow slider-container-block-background">
                 <div class="slide-content">
