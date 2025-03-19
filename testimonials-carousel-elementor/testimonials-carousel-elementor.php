@@ -7,7 +7,7 @@
  * Plugin Name: Testimonial Carousel For Elementor
  * Description: The compact Testimonial Carousel for Elementor lets you show long text reviews in Pop-Up of Carousel Slider.
  * Plugin URI:
- * Version:     11.5.0
+ * Version:     11.6.0
  * Author:      UAPP GROUP
  * Author URI:  https://uapp.group/
  * Requires PHP: 7.4.1
@@ -19,10 +19,10 @@ define('TESTIMONIALS_CAROUSEL_ELEMENTOR', __FILE__);
 /**
  * Plugin Version
  *
- * @since 11.4.0
+ * @since 11.6.0
  * @var string The plugin version.
  */
-define('TESTIMONIALS_VERSION', '11.5.0');
+define('TESTIMONIALS_VERSION', '11.6.0');
 
 /**
  * Include the Testimonials_Carousel_Elementor class.

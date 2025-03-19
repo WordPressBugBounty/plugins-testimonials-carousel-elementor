@@ -9,22 +9,25 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.5.0
+ * @since      11.6.0
  * php version 7.4.1
  */
 
 namespace TestimonialsCarouselElementor\Widgets;
 
-use Elementor\Group_Control_Background;
-use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Text_Shadow;
-use Elementor\Group_Control_Typography;
-use Elementor\Icons_Manager;
-use Elementor\Repeater;
+use Elementor\Embed;
 use Elementor\Utils;
+use Elementor\Plugin;
+use Elementor\Repeater;
 use Elementor\Widget_Base;
+use Elementor\Icons_Manager;
+use Elementor\Control_Media;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Background;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Typography;
+use Elementor\Group_Control_Text_Shadow;
 
 // Security Note: Blocks direct access to the plugin PHP files.
 defined('ABSPATH') || die();
@@ -32,10 +35,15 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Coverflow widget class.
  *
- * @since 11.5.0
+ * @since 11.6.0
  */
 class TestimonialsCarousel_Coverflow extends Widget_Base
 {
+  /**
+   * @var int
+   */
+  private $slide_prints_count = 0;
+
   /**
    * TestimonialsCarousel_Coverflow constructor.
    *
@@ -50,7 +58,6 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
     wp_register_style('swiper', plugins_url('/assets/css/swiper-bundle.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
     wp_register_style('testimonials-carousel', plugins_url('/assets/css/testimonials-carousel.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
     wp_register_script('swiper', plugins_url('/assets/js/swiper-bundle.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION, true);
-
 
     if (!function_exists('get_plugin_data')) {
       require_once(ABSPATH . 'wp-admin/includes/plugin.php');
@@ -67,7 +74,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access public
    *
@@ -81,7 +88,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access public
    *
@@ -95,7 +102,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access public
    *
@@ -114,7 +121,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access public
    *
@@ -162,7 +169,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access protected
    */
@@ -377,6 +384,22 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
     );
 
     $repeater->add_control(
+      'lightbox',
+      [
+        'label'              => esc_html__('Lightbox', 'testimonials-carousel-elementor'),
+        'type'               => Controls_Manager::SWITCHER,
+        'frontend_available' => true,
+        'label_off'          => esc_html__('Off', 'testimonials-carousel-elementor'),
+        'label_on'           => esc_html__('On', 'testimonials-carousel-elementor'),
+        'return_value'       => 'yes',
+        'condition'          => [
+          'slide_show_image'  => 'yes',
+          'slide_show_button' => 'yes',
+        ],
+      ]
+    );
+
+    $repeater->add_control(
       'slide_button',
       [
         'label'     => esc_html__('Button Text', 'testimonials-carousel-elementor'),
@@ -396,12 +419,54 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
     );
 
     $repeater->add_control(
+      'lightbox_type',
+      [
+        'type'      => Controls_Manager::CHOOSE,
+        'label'     => esc_html__('Type', 'testimonials-carousel-elementor'),
+        'default'   => 'image',
+        'options'   => [
+          'image' => [
+            'title' => esc_html__('Image', 'testimonials-carousel-elementor'),
+            'icon'  => 'eicon-image-bold',
+          ],
+          'video' => [
+            'title' => esc_html__('Video', 'testimonials-carousel-elementor'),
+            'icon'  => 'eicon-video-camera',
+          ],
+        ],
+        'toggle'    => false,
+        'condition' => [
+          'lightbox' => 'yes',
+        ],
+      ]
+    );
+
+    $repeater->add_control(
+      'video',
+      [
+        'label'       => esc_html__('Video Link', 'testimonials-carousel-elementor'),
+        'type'        => Controls_Manager::URL,
+        'dynamic'     => [
+          'active' => true,
+        ],
+        'placeholder' => esc_html__('Enter your video link', 'testimonials-carousel-elementor'),
+        'description' => esc_html__('YouTube or Vimeo link', 'testimonials-carousel-elementor'),
+        'options'     => false,
+        'condition'   => [
+          'lightbox'      => 'yes',
+          'lightbox_type' => 'video',
+        ],
+      ]
+    );
+
+    $repeater->add_control(
       'slide_button_link',
       [
         'label'       => esc_html__('Link', 'testimonials-carousel-elementor'),
         'type'        => Controls_Manager::URL,
         'placeholder' => esc_html__('https://your-link.com', 'testimonials-carousel-elementor'),
         'condition'   => [
+          'lightbox'          => '',
           'slide_show_button' => 'yes',
         ],
       ]
@@ -1270,7 +1335,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.5.0
+   * @since  11.6.0
    *
    * @access protected
    */
@@ -1318,7 +1383,40 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
         || esc_attr($settings['navigation']) === "none"
       ) { ?>slider-arrows-disabled<?php } ?>">
         <ul class="swiper-wrapper" role="list">
-          <?php foreach ($slide as $item) {
+          <?php foreach ($slide as $index => $item) {
+
+            /* Start Lightbox */
+
+            if ($item['lightbox'] === 'yes') {
+              $this->slide_prints_count++;
+
+              $element_key = 'slide-' . $index . '-' . $this->slide_prints_count;
+
+              $image_link_to = $item['slide_image']['url'];
+
+              if ($image_link_to) {
+                $this->add_render_attribute($element_key . '_link', 'href', $image_link_to);
+
+                $this->add_lightbox_data_attributes($element_key . '_link', '', 'yes', $this->get_id());
+
+                if (Plugin::$instance->editor->is_edit_mode()) {
+                  $this->add_render_attribute($element_key . '_link', 'class', 'elementor-clickable');
+                }
+
+                if ('video' === $item['lightbox_type'] && $item['video']['url']) {
+                  $embed_url_params = [
+                    'autoplay' => 1,
+                    'rel'      => 0,
+                    'controls' => 0,
+                  ];
+
+                  $this->add_render_attribute($element_key . '_link', 'data-elementor-lightbox-video', Embed::get_embed_url($item['video']['url'], $embed_url_params));
+                }
+              }
+            }
+
+            /* End Lightbox */
+
             $this->add_link_attributes('slide_button_link', $item['slide_button_link'] ?? [], true); ?>
             <li class="swiper-slide slider-container-background">
               <div class="block-shadow slider-container-block-background"
@@ -1346,7 +1444,7 @@ class TestimonialsCarousel_Coverflow extends Widget_Base
                       <a id="<?php echo wp_kses($item['slide_button_css_id'], []); ?>"
                          class="elementor-button slide-coverflow-button <?php if (!empty($settings['slide_button_hover_animation'])) { ?> elementor-animation-<?php echo esc_attr($settings['slide_button_hover_animation']);
                          } ?>"
-                        <?php $this->print_render_attribute_string('slide_button_link'); ?>>
+                        <?php $this->print_render_attribute_string(($item['lightbox'] === 'yes' && !empty($image_link_to)) ? $element_key . '_link' : 'slide_button_link'); ?>>
                        <span class="elementor-button-content-wrapper">
                          <?php if (!empty($this->get_settings('slide_selected_icon_button')['value'])) { ?>
                            <span
