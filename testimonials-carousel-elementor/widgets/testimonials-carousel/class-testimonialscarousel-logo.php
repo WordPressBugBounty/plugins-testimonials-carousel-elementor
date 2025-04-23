@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.6.1
+ * @since      11.6.2
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Logo widget class.
  *
- * @since 11.6.1
+ * @since 11.6.2
  */
 class TestimonialsCarousel_Logo extends Widget_Base
 {
@@ -53,9 +53,9 @@ class TestimonialsCarousel_Logo extends Widget_Base
     }
 
     if (get_plugin_data(ELEMENTOR__FILE__)['Version'] >= "3.5.0") {
-      wp_register_script('testimonials-carousel-widget-handler', plugins_url('/assets/js/testimonials-carousel-widget-handler.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), ['elementor-frontend'], TESTIMONIALS_VERSION, true);
+      wp_register_script('testimonials-carousel-widget-handler', plugins_url('/assets/js/testimonials-carousel-widget-handler.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION, true);
     } else {
-      wp_register_script('testimonials-carousel-widget-handler', plugins_url('/assets/js/testimonials-carousel-widget-old-elementor-handler.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), ['elementor-frontend'], TESTIMONIALS_VERSION, true);
+      wp_register_script('testimonials-carousel-widget-handler', plugins_url('/assets/js/testimonials-carousel-widget-old-elementor-handler.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION, true);
     }
   }
 
@@ -63,7 +63,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access public
    *
@@ -77,7 +77,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access public
    *
@@ -91,7 +91,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access public
    *
@@ -110,7 +110,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access public
    *
@@ -163,7 +163,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access protected
    */
@@ -1985,7 +1985,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.6.1
+   * @since  11.6.2
    *
    * @access protected
    */
