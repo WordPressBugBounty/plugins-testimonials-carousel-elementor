@@ -17,7 +17,7 @@
           const slideContentFieldAI = repeaterRowControls.querySelector('[data-setting="slide_ai_content"]');
 
           if (slideContentField) {
-            const apiKey = '<?php echo get_option("elementor_openai_api_key"); ?>';
+            const apiKey = '<?php echo esc_html(get_option("elementor_openai_api_key")); ?>';
 
             const testimonialsNotification = document.getElementById('testimonials-notifications');
 

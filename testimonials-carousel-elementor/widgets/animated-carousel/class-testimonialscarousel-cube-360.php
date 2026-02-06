@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.6.2
+ * @since      11.7.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Cube_360 widget class.
  *
- * @since 11.6.2
+ * @since 11.7.0
  */
 class TestimonialsCarousel_Cube_360 extends Widget_Base
 {
@@ -64,7 +64,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -78,7 +78,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -92,7 +92,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -111,7 +111,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -143,7 +143,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access protected
    */
@@ -151,3322 +151,3322 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
   {
     // Side Front
     $this->start_controls_section(
-      'cube_front',
-      [
-        'label' => __('Front', 'testimonials-carousel-elementor'),
-      ]
+        'cube_front',
+        [
+            'label' => __('Front', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_front_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_front_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_front_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_front_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_front_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_front_price_enable' => 'yes',
-        ],
-      ]
+        'cube_front_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_front_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_front_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_front_price_enable' => 'yes',
-        ],
-      ]
+        'cube_front_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_front_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_front_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_front_price_enable' => 'yes',
-        ],
-      ]
+        'cube_front_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_front_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_front_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_front_price_enable'   => 'yes',
-          'cube_front_price_position' => 'right',
-        ],
-      ]
+        'cube_front_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_front_price_enable'   => 'yes',
+                'cube_front_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_front_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_front_price_enable'   => 'yes',
-          'cube_front_price_position' => 'left',
-        ],
-      ]
+        'cube_front_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_front_price_enable'   => 'yes',
+                'cube_front_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_front_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price',
-        'condition' => [
-          'cube_front_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_front_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price',
+            'condition' => [
+                'cube_front_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_front_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_front_price_enable' => 'yes',
-        ],
-      ]
+        'cube_front_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_front_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_front_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_front_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_front_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-content',
-        'condition' => [
-          'cube_front_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_front_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_front_name_enable'    => 'yes',
-          'cube_front_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_front_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-content',
+            'condition' => [
+                'cube_front_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_front_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_front_name_enable'    => 'yes',
-          'cube_front_overlay_enable' => 'yes',
+        'cube_front_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_front_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_front_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_front_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_front_rating_enable'  => 'yes',
-          'cube_front_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_front_rating_enable'  => 'yes',
-          'cube_front_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_front_rating_enable'  => 'yes',
-          'cube_front_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_front_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_front_reviews_enable' => 'yes',
-          'cube_front_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_front_reviews_enable' => 'yes',
-          'cube_front_overlay_enable' => 'yes',
+        'cube_front_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_front_name_enable'    => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_front_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_front_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_front_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.front .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_front_overlay_enable' => 'yes',
-          'cube_front_content_enable' => 'yes',
+        'cube_front_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_front_name_enable'    => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_front_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_front_overlay_enable' => 'yes',
-          'cube_front_content_enable' => 'yes',
+        'cube_front_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_front_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_front_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_front_rating_enable'  => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_front_rating_enable'  => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_front_rating_enable'  => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_front_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_front_reviews_enable' => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_front_reviews_enable' => 'yes',
+                'cube_front_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_front_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.front .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_front_overlay_enable' => 'yes',
+                'cube_front_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_front_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_front_overlay_enable' => 'yes',
+                'cube_front_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Side Right
     $this->start_controls_section(
-      'cube_right',
-      [
-        'label' => __('Right', 'testimonials-carousel-elementor'),
-      ]
+        'cube_right',
+        [
+            'label' => __('Right', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_right_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_right_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_right_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_right_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_right_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_right_price_enable' => 'yes',
-        ],
-      ]
+        'cube_right_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_right_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_right_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_right_price_enable' => 'yes',
-        ],
-      ]
+        'cube_right_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_right_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_right_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_right_price_enable' => 'yes',
-        ],
-      ]
+        'cube_right_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_right_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_right_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_right_price_enable'   => 'yes',
-          'cube_right_price_position' => 'right',
-        ],
-      ]
+        'cube_right_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_right_price_enable'   => 'yes',
+                'cube_right_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_right_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_right_price_enable'   => 'yes',
-          'cube_right_price_position' => 'left',
-        ],
-      ]
+        'cube_right_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_right_price_enable'   => 'yes',
+                'cube_right_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_right_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price',
-        'condition' => [
-          'cube_right_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_right_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price',
+            'condition' => [
+                'cube_right_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_right_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_right_price_enable' => 'yes',
-        ],
-      ]
+        'cube_right_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_right_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_right_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_right_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_right_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-content',
-        'condition' => [
-          'cube_right_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_right_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_right_name_enable'    => 'yes',
-          'cube_right_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_right_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-content',
+            'condition' => [
+                'cube_right_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_right_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_right_name_enable'    => 'yes',
-          'cube_right_overlay_enable' => 'yes',
+        'cube_right_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_right_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_right_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_right_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_right_rating_enable'  => 'yes',
-          'cube_right_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_right_rating_enable'  => 'yes',
-          'cube_right_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_right_rating_enable'  => 'yes',
-          'cube_right_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_right_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_right_reviews_enable' => 'yes',
-          'cube_right_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_right_reviews_enable' => 'yes',
-          'cube_right_overlay_enable' => 'yes',
+        'cube_right_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_right_name_enable'    => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_right_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_right_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_right_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.right .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_right_overlay_enable' => 'yes',
-          'cube_right_content_enable' => 'yes',
+        'cube_right_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_right_name_enable'    => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_right_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_right_overlay_enable' => 'yes',
-          'cube_right_content_enable' => 'yes',
+        'cube_right_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_right_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_right_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_right_rating_enable'  => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_right_rating_enable'  => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_right_rating_enable'  => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_right_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_right_reviews_enable' => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_right_reviews_enable' => 'yes',
+                'cube_right_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_right_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.right .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_right_overlay_enable' => 'yes',
+                'cube_right_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_right_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_right_overlay_enable' => 'yes',
+                'cube_right_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Side Back
     $this->start_controls_section(
-      'cube_back',
-      [
-        'label' => __('Back', 'testimonials-carousel-elementor'),
-      ]
+        'cube_back',
+        [
+            'label' => __('Back', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_back_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_back_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_back_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_back_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_back_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_back_price_enable' => 'yes',
-        ],
-      ]
+        'cube_back_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_back_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_back_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_back_price_enable' => 'yes',
-        ],
-      ]
+        'cube_back_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_back_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_back_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_back_price_enable' => 'yes',
-        ],
-      ]
+        'cube_back_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_back_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_back_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_back_price_enable'   => 'yes',
-          'cube_back_price_position' => 'right',
-        ],
-      ]
+        'cube_back_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_back_price_enable'   => 'yes',
+                'cube_back_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_back_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_back_price_enable'   => 'yes',
-          'cube_back_price_position' => 'left',
-        ],
-      ]
+        'cube_back_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_back_price_enable'   => 'yes',
+                'cube_back_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_back_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price',
-        'condition' => [
-          'cube_back_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_back_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price',
+            'condition' => [
+                'cube_back_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_back_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_back_price_enable' => 'yes',
-        ],
-      ]
+        'cube_back_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_back_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_back_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_back_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_back_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-content',
-        'condition' => [
-          'cube_back_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_back_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_back_name_enable'    => 'yes',
-          'cube_back_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_back_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-content',
+            'condition' => [
+                'cube_back_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_back_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_back_name_enable'    => 'yes',
-          'cube_back_overlay_enable' => 'yes',
+        'cube_back_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_back_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_back_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_back_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_back_rating_enable'  => 'yes',
-          'cube_back_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_back_rating_enable'  => 'yes',
-          'cube_back_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_back_rating_enable'  => 'yes',
-          'cube_back_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_back_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_back_reviews_enable' => 'yes',
-          'cube_back_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_back_reviews_enable' => 'yes',
-          'cube_back_overlay_enable' => 'yes',
+        'cube_back_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_back_name_enable'    => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_back_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_back_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_back_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.back .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_back_overlay_enable' => 'yes',
-          'cube_back_content_enable' => 'yes',
+        'cube_back_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_back_name_enable'    => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_back_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_back_overlay_enable' => 'yes',
-          'cube_back_content_enable' => 'yes',
+        'cube_back_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_back_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_back_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_back_rating_enable'  => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_back_rating_enable'  => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_back_rating_enable'  => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_back_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_back_reviews_enable' => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_back_reviews_enable' => 'yes',
+                'cube_back_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_back_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.back .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_back_overlay_enable' => 'yes',
+                'cube_back_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_back_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_back_overlay_enable' => 'yes',
+                'cube_back_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Side Left
     $this->start_controls_section(
-      'cube_left',
-      [
-        'label' => __('Left', 'testimonials-carousel-elementor'),
-      ]
+        'cube_left',
+        [
+            'label' => __('Left', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_left_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_left_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_left_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_left_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_left_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_left_price_enable' => 'yes',
-        ],
-      ]
+        'cube_left_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_left_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_left_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_left_price_enable' => 'yes',
-        ],
-      ]
+        'cube_left_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_left_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_left_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_left_price_enable' => 'yes',
-        ],
-      ]
+        'cube_left_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_left_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_left_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_left_price_enable'   => 'yes',
-          'cube_left_price_position' => 'right',
-        ],
-      ]
+        'cube_left_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_left_price_enable'   => 'yes',
+                'cube_left_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_left_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_left_price_enable'   => 'yes',
-          'cube_left_price_position' => 'left',
-        ],
-      ]
+        'cube_left_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_left_price_enable'   => 'yes',
+                'cube_left_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_left_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price',
-        'condition' => [
-          'cube_left_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_left_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price',
+            'condition' => [
+                'cube_left_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_left_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_left_price_enable' => 'yes',
-        ],
-      ]
+        'cube_left_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_left_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_left_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_left_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_left_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-content',
-        'condition' => [
-          'cube_left_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_left_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_left_name_enable'    => 'yes',
-          'cube_left_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_left_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-content',
+            'condition' => [
+                'cube_left_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_left_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_left_name_enable'    => 'yes',
-          'cube_left_overlay_enable' => 'yes',
+        'cube_left_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_left_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_left_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_left_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_left_rating_enable'  => 'yes',
-          'cube_left_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_left_rating_enable'  => 'yes',
-          'cube_left_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_left_rating_enable'  => 'yes',
-          'cube_left_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_left_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_left_reviews_enable' => 'yes',
-          'cube_left_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_left_reviews_enable' => 'yes',
-          'cube_left_overlay_enable' => 'yes',
+        'cube_left_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_left_name_enable'    => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_left_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_left_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_left_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.left .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_left_overlay_enable' => 'yes',
-          'cube_left_content_enable' => 'yes',
+        'cube_left_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_left_name_enable'    => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_left_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_left_overlay_enable' => 'yes',
-          'cube_left_content_enable' => 'yes',
+        'cube_left_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_left_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_left_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_left_rating_enable'  => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_left_rating_enable'  => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_left_rating_enable'  => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_left_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_left_reviews_enable' => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_left_reviews_enable' => 'yes',
+                'cube_left_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_left_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.left .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_left_overlay_enable' => 'yes',
+                'cube_left_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_left_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_left_overlay_enable' => 'yes',
+                'cube_left_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Side Bottom
     $this->start_controls_section(
-      'cube_bottom',
-      [
-        'label' => __('Bottom', 'testimonials-carousel-elementor'),
-      ]
+        'cube_bottom',
+        [
+            'label' => __('Bottom', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_bottom_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_bottom_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_bottom_price_enable' => 'yes',
-        ],
-      ]
+        'cube_bottom_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_bottom_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_bottom_price_enable' => 'yes',
-        ],
-      ]
+        'cube_bottom_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_bottom_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_bottom_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_bottom_price_enable' => 'yes',
-        ],
-      ]
+        'cube_bottom_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_bottom_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_bottom_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_bottom_price_enable'   => 'yes',
-          'cube_bottom_price_position' => 'right',
-        ],
-      ]
+        'cube_bottom_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_bottom_price_enable'   => 'yes',
+                'cube_bottom_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_bottom_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_bottom_price_enable'   => 'yes',
-          'cube_bottom_price_position' => 'left',
-        ],
-      ]
+        'cube_bottom_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_bottom_price_enable'   => 'yes',
+                'cube_bottom_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_bottom_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price',
-        'condition' => [
-          'cube_bottom_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_bottom_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price',
+            'condition' => [
+                'cube_bottom_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_bottom_price_enable' => 'yes',
-        ],
-      ]
+        'cube_bottom_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_bottom_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_bottom_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_bottom_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_bottom_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-content',
-        'condition' => [
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_bottom_name_enable'    => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_bottom_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-content',
+            'condition' => [
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_bottom_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_bottom_name_enable'    => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
+        'cube_bottom_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_bottom_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_bottom_rating_enable'  => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_bottom_rating_enable'  => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_bottom_rating_enable'  => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_bottom_reviews_enable' => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_bottom_reviews_enable' => 'yes',
-          'cube_bottom_overlay_enable' => 'yes',
+        'cube_bottom_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_bottom_name_enable'    => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_bottom_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_bottom_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_bottom_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_bottom_overlay_enable' => 'yes',
-          'cube_bottom_content_enable' => 'yes',
+        'cube_bottom_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_bottom_name_enable'    => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_bottom_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_bottom_overlay_enable' => 'yes',
-          'cube_bottom_content_enable' => 'yes',
+        'cube_bottom_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_bottom_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_bottom_rating_enable'  => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_bottom_rating_enable'  => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_bottom_rating_enable'  => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_bottom_reviews_enable' => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_bottom_reviews_enable' => 'yes',
+                'cube_bottom_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_bottom_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.bottom .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_bottom_overlay_enable' => 'yes',
+                'cube_bottom_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_bottom_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_bottom_overlay_enable' => 'yes',
+                'cube_bottom_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Side Top
     $this->start_controls_section(
-      'cube_top',
-      [
-        'label' => __('Top', 'testimonials-carousel-elementor'),
-      ]
+        'cube_top',
+        [
+            'label' => __('Top', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_top_image',
-      [
-        'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
-        'type'    => Controls_Manager::MEDIA,
-        'default' => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'      => [
-          'active' => false,
-        ],
-      ]
+        'cube_top_image',
+        [
+            'label'   => __('Choose Image', 'testimonials-carousel-elementor'),
+            'type'    => Controls_Manager::MEDIA,
+            'default' => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'      => [
+                'active' => false,
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_top_price_enable',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_top_price_enable',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'cube_top_price',
-      [
-        'label'              => __('Price', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_top_price_enable' => 'yes',
-        ],
-      ]
+        'cube_top_price',
+        [
+            'label'              => __('Price', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('from $230 per group', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_top_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_top_price_position',
-      [
-        'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_top_price_enable' => 'yes',
-        ],
-      ]
+        'cube_top_price_position',
+        [
+            'label'     => esc_html__('Price Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_top_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_top_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_top_price_enable' => 'yes',
-        ],
-      ]
+        'cube_top_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_top_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_top_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'cube_top_price_enable'   => 'yes',
-          'cube_top_price_position' => 'right',
-        ],
-      ]
+        'cube_top_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'cube_top_price_enable'   => 'yes',
+                'cube_top_price_position' => 'right',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_top_price_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'cube_top_price_enable'   => 'yes',
-          'cube_top_price_position' => 'left',
-        ],
-      ]
+        'cube_top_price_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'cube_top_price_enable'   => 'yes',
+                'cube_top_price_position' => 'left',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_top_price',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price',
-        'condition' => [
-          'cube_top_price_enable' => 'yes',
-        ],
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_top_price',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price',
+            'condition' => [
+                'cube_top_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_top_price_color',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_top_price_enable' => 'yes',
-        ],
-      ]
+        'cube_top_price_color',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_top_price_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_top_overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'separator'    => 'before',
-      ]
+        'cube_top_overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_cube_top_overlay',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-content',
-        'condition' => [
-          'cube_top_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_name_enable',
-      [
-        'label'        => __('Title', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_top_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_name',
-      [
-        'label'              => __('Title', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Title', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_top_name_enable'    => 'yes',
-          'cube_top_overlay_enable' => 'yes',
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_cube_top_overlay',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-content',
+            'condition' => [
+                'cube_top_overlay_enable' => 'yes',
+            ],
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_top_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_top_name_enable'    => 'yes',
-          'cube_top_overlay_enable' => 'yes',
+        'cube_top_name_enable',
+        [
+            'label'        => __('Title', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_top_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_top_rating_enable',
-      [
-        'label'        => __('Rating', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_top_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_rating',
-      [
-        'label'              => __('Rating', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0,
-        'max'                => 5,
-        'step'               => 1,
-        'default'            => 4,
-        'frontend_available' => true,
-        'condition'          => [
-          'cube_top_rating_enable'  => 'yes',
-          'cube_top_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_rating_color',
-      [
-        'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .slide-icons .icon-star-full' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_top_rating_enable'  => 'yes',
-          'cube_top_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_rating_unmarked_color',
-      [
-        'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_top_rating_enable'  => 'yes',
-          'cube_top_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_reviews_enable',
-      [
-        'label'        => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_top_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_reviews',
-      [
-        'label'              => __('Reviews', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_top_reviews_enable' => 'yes',
-          'cube_top_overlay_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_reviews_color',
-      [
-        'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_top_reviews_enable' => 'yes',
-          'cube_top_overlay_enable' => 'yes',
+        'cube_top_name',
+        [
+            'label'              => __('Title', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Title', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_top_name_enable'    => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_top_content_enable',
-      [
-        'label'        => __('Content', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'cube_top_overlay_enable' => 'yes',
-        ],
-        'separator'    => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'cube_top_content_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container.top .cube-content' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_top_overlay_enable' => 'yes',
-          'cube_top_content_enable' => 'yes',
+        'cube_top_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_top_name_enable'    => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ]
         ]
-      ]
     );
 
     $this->add_control(
-      'cube_top_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-        'condition'          => [
-          'cube_top_overlay_enable' => 'yes',
-          'cube_top_content_enable' => 'yes',
+        'cube_top_rating_enable',
+        [
+            'label'        => __('Rating', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_top_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
         ]
-      ]
+    );
+
+    $this->add_control(
+        'cube_top_rating',
+        [
+            'label'              => __('Rating', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0,
+            'max'                => 5,
+            'step'               => 1,
+            'default'            => 4,
+            'frontend_available' => true,
+            'condition'          => [
+                'cube_top_rating_enable'  => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_rating_color',
+        [
+            'label'     => esc_html__('Rating Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .slide-icons .icon-star-full' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_top_rating_enable'  => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_rating_unmarked_color',
+        [
+            'label'     => esc_html__('Rating Unmarked Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_top_rating_enable'  => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_reviews_enable',
+        [
+            'label'        => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_top_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_reviews',
+        [
+            'label'              => __('Reviews', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('138 reviews', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_top_reviews_enable' => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_reviews_color',
+        [
+            'label'     => esc_html__('Reviews Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_top_reviews_enable' => 'yes',
+                'cube_top_overlay_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_content_enable',
+        [
+            'label'        => __('Content', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'cube_top_overlay_enable' => 'yes',
+            ],
+            'separator'    => 'before',
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_content_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container.top .cube-content' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_top_overlay_enable' => 'yes',
+                'cube_top_content_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'cube_top_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+            'condition'          => [
+                'cube_top_overlay_enable' => 'yes',
+                'cube_top_content_enable' => 'yes',
+            ]
+        ]
     );
 
     $this->end_controls_section();
 
     // Additional Options Section
     $this->start_controls_section(
-      'section_additional_options',
-      [
-        'label' => esc_html__('Additional Options', 'testimonials-carousel-elementor'),
-      ]
+        'section_additional_options',
+        [
+            'label' => esc_html__('Additional Options', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'cube_start_coordinate_x',
-      [
-        'label'              => esc_html__('Start Cube X', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'default'            => -23,
-        'frontend_available' => true,
-      ]
+        'cube_start_coordinate_x',
+        [
+            'label'              => esc_html__('Start Cube X', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'default'            => -23,
+            'frontend_available' => true,
+        ]
     );
 
     $this->add_control(
-      'cube_start_coordinate_y',
-      [
-        'label'              => esc_html__('Start Cube Y', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'default'            => 33,
-        'frontend_available' => true,
-      ]
+        'cube_start_coordinate_y',
+        [
+            'label'              => esc_html__('Start Cube Y', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'default'            => 33,
+            'frontend_available' => true,
+        ]
     );
 
     $this->add_control(
-      'interactive_icon_enable',
-      [
-        'label'        => __('Interactive Icon', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'interactive_icon_enable',
+        [
+            'label'        => __('Interactive Icon', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
 
     $this->add_control(
-      'enable_price',
-      [
-        'label'        => __('Price', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'enable_price',
+        [
+            'label'        => __('Price', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
 
     $this->add_control(
-      'overlay_enable',
-      [
-        'label'        => __('Overlay', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'overlay_enable',
+        [
+            'label'        => __('Overlay', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
 
     $this->add_control(
-      'cursor_grab_enable',
-      [
-        'label'        => __('Cursor Grab', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'cursor_grab_enable',
+        [
+            'label'        => __('Cursor Grab', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
 
     $this->add_control(
-      'animation_enable',
-      [
-        'label'        => __('Animation', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'animation_enable',
+        [
+            'label'        => __('Animation', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
 
     $this->add_control(
-      'animation_rotation_x',
-      [
-        'label'        => __('Rotation X', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'animation_enable' => 'yes',
-        ],
-      ]
+        'animation_rotation_x',
+        [
+            'label'        => __('Rotation X', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'animation_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'animation_rotation_y',
-      [
-        'label'        => __('Rotation Y', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-        'condition'    => [
-          'animation_enable' => 'yes',
-        ],
-      ]
+        'animation_rotation_y',
+        [
+            'label'        => __('Rotation Y', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+            'condition'    => [
+                'animation_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'animation_speed',
-      [
-        'label'              => esc_html__('Animation Speed', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0.1,
-        'step'               => 0.1,
-        'max'                => 1,
-        'default'            => 0.5,
-        'frontend_available' => true,
-        'condition'          => [
-          'animation_enable' => 'yes',
-        ],
-      ]
+        'animation_speed',
+        [
+            'label'              => esc_html__('Animation Speed', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0.1,
+            'step'               => 0.1,
+            'max'                => 1,
+            'default'            => 0.5,
+            'frontend_available' => true,
+            'condition'          => [
+                'animation_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'rotation_speed',
-      [
-        'label'              => esc_html__('Rotation Speed', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 0.1,
-        'step'               => 0.1,
-        'max'                => 1,
-        'default'            => 0.5,
-        'frontend_available' => true,
-      ]
+        'rotation_speed',
+        [
+            'label'              => esc_html__('Rotation Speed', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 0.1,
+            'step'               => 0.1,
+            'max'                => 1,
+            'default'            => 0.5,
+            'frontend_available' => true,
+        ]
     );
 
     $this->end_controls_section();
 
     // General styles Section
     $this->start_controls_section(
-      'general_styles_section',
-      [
-        'label' => esc_html__('General styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'general_styles_section',
+        [
+            'label' => esc_html__('General styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_wrapper_margin',
-      [
-        'label'      => esc_html__('Margin', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .myCube-360' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
+        'cube_wrapper_margin',
+        [
+            'label'      => esc_html__('Margin', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .myCube-360' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_wrapper_padding',
-      [
-        'label'      => esc_html__('Padding', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .myCube-360' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
+        'cube_wrapper_padding',
+        [
+            'label'      => esc_html__('Padding', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'vw', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .myCube-360' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'     => 'background_cube_wrapper',
-        'types'    => ['classic', 'gradient'],
-        'selector' => '{{WRAPPER}} .myCube-360',
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'     => 'background_cube_wrapper',
+            'types'    => ['classic', 'gradient'],
+            'selector' => '{{WRAPPER}} .myCube-360',
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_wrapper_height',
-      [
-        'label'      => esc_html__('Height', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 400,
-            'step' => 1,
-            'max'  => 690,
-          ],
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360" => 'height: {{SIZE}}{{UNIT}};',
-        ],
-      ]
+        'cube_wrapper_height',
+        [
+            'label'      => esc_html__('Height', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 400,
+                    'step' => 1,
+                    'max'  => 690,
+                ],
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360" => 'height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->end_controls_section();
 
     // Cube styles Section
     $this->start_controls_section(
-      'cube_styles_section',
-      [
-        'label' => esc_html__('Cube styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'cube_styles_section',
+        [
+            'label' => esc_html__('Cube styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_custom_width',
-      [
-        'label'      => esc_html__('Width', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['em'],
-        'default'    => [
-          'unit' => 'em',
-        ],
-        'range'      => [
-          'em' => [
-            'step' => 1,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .myCube-360 .cube-container' => 'width: {{SIZE}}{{UNIT}};',
-        ],
-      ]
+        'cube_custom_width',
+        [
+            'label'      => esc_html__('Width', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['em'],
+            'default'    => [
+                'unit' => 'em',
+            ],
+            'range'      => [
+                'em' => [
+                    'step' => 1,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .myCube-360 .cube-container' => 'width: {{SIZE}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_height',
-      [
-        'label'      => esc_html__('Height', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['em'],
-        'default'    => [
-          'unit' => 'em',
-        ],
-        'range'      => [
-          'em' => [
-            'step' => 1,
-          ],
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .cube-container" => 'height: {{SIZE}}{{UNIT}};',
-        ],
-      ]
+        'cube_height',
+        [
+            'label'      => esc_html__('Height', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['em'],
+            'default'    => [
+                'unit' => 'em',
+            ],
+            'range'      => [
+                'em' => [
+                    'step' => 1,
+                ],
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .cube-container" => 'height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_translate_z',
-      [
-        'label'      => esc_html__('TranslateZ', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['em'],
-        'default'    => [
-          'unit' => 'em',
-        ],
-        'range'      => [
-          'em' => [
-            'step' => 0.1,
-          ],
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .side-container.front"  => 'transform: translateZ({{SIZE}}{{UNIT}});',
-          "{{WRAPPER}} .myCube-360 .side-container.right"  => 'transform: rotateY(90deg) translateZ({{SIZE}}{{UNIT}});',
-          "{{WRAPPER}} .myCube-360 .side-container.back"   => 'transform: rotateY(180deg) translateZ({{SIZE}}{{UNIT}});',
-          "{{WRAPPER}} .myCube-360 .side-container.left"   => 'transform: rotateY(-90deg) translateZ({{SIZE}}{{UNIT}});',
-          "{{WRAPPER}} .myCube-360 .side-container.top"    => 'transform: rotateX(90deg) translateZ({{SIZE}}{{UNIT}});',
-          "{{WRAPPER}} .myCube-360 .side-container.bottom" => 'transform: rotateX(-90deg) translateZ({{SIZE}}{{UNIT}});',
-        ],
-      ]
+        'cube_translate_z',
+        [
+            'label'      => esc_html__('TranslateZ', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['em'],
+            'default'    => [
+                'unit' => 'em',
+            ],
+            'range'      => [
+                'em' => [
+                    'step' => 0.1,
+                ],
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .side-container.front"  => 'transform: translateZ({{SIZE}}{{UNIT}});',
+                "{{WRAPPER}} .myCube-360 .side-container.right"  => 'transform: rotateY(90deg) translateZ({{SIZE}}{{UNIT}});',
+                "{{WRAPPER}} .myCube-360 .side-container.back"   => 'transform: rotateY(180deg) translateZ({{SIZE}}{{UNIT}});',
+                "{{WRAPPER}} .myCube-360 .side-container.left"   => 'transform: rotateY(-90deg) translateZ({{SIZE}}{{UNIT}});',
+                "{{WRAPPER}} .myCube-360 .side-container.top"    => 'transform: rotateX(90deg) translateZ({{SIZE}}{{UNIT}});',
+                "{{WRAPPER}} .myCube-360 .side-container.bottom" => 'transform: rotateX(-90deg) translateZ({{SIZE}}{{UNIT}});',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'      => 'cube_border',
-        'selector'  => '{{WRAPPER}} .myCube-360 .cube-side',
-        'separator' => 'before',
-      ]
+        Group_Control_Border::get_type(),
+        [
+            'name'      => 'cube_border',
+            'selector'  => '{{WRAPPER}} .myCube-360 .cube-side',
+            'separator' => 'before',
+        ]
     );
 
     $this->add_responsive_control(
-      'icon_size',
-      [
-        'label'     => esc_html__('Rating icon size', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 5,
-            'max' => 30,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .slide-icons i' => 'font-size: {{SIZE}}{{UNIT}}',
-        ],
-        'separator' => 'before',
-      ]
+        'icon_size',
+        [
+            'label'     => esc_html__('Rating icon size', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 5,
+                    'max' => 30,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .slide-icons i' => 'font-size: {{SIZE}}{{UNIT}}',
+            ],
+            'separator' => 'before',
+        ]
     );
 
     $this->add_responsive_control(
-      'icon_space',
-      [
-        'label'     => esc_html__('Rating icon spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 20,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .slide-icons i' => 'margin-right: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'icon_space',
+        [
+            'label'     => esc_html__('Rating icon spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 20,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .slide-icons i' => 'margin-right: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_control(
-      'cube_rating_global_enable',
-      [
-        'label'        => __('Rating Style', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => '',
-        'separator'    => 'before',
-      ]
+        'cube_rating_global_enable',
+        [
+            'label'        => __('Rating Style', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => '',
+            'separator'    => 'before',
+        ]
     );
 
     $this->add_control(
-      'stars_color',
-      [
-        'label'     => esc_html__('Rating icon color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-icons .icon-star-full' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_rating_global_enable' => 'yes',
-        ],
-      ]
+        'stars_color',
+        [
+            'label'     => esc_html__('Rating icon color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-icons .icon-star-full' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_rating_global_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_control(
-      'stars_unmarked_color',
-      [
-        'label'     => esc_html__('Rating unmarked icon color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
-        ],
-        'condition' => [
-          'cube_rating_global_enable' => 'yes',
-        ],
-      ]
+        'stars_unmarked_color',
+        [
+            'label'     => esc_html__('Rating unmarked icon color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-icons .icon-star-empty' => 'color: {{VALUE}}',
+            ],
+            'condition' => [
+                'cube_rating_global_enable' => 'yes',
+            ],
+        ]
     );
     $this->end_controls_section();
 
     // Content styles Section
     $this->start_controls_section(
-      'content_styles_section',
-      [
-        'label' => __('Content styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'content_styles_section',
+        [
+            'label' => __('Content styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
 
     $this->add_control(
-      'cube_content_global_enable',
-      [
-        'label'        => __('Global Style', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => '',
-      ]
+        'cube_content_global_enable',
+        [
+            'label'        => __('Global Style', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => '',
+        ]
     );
 
     $this->add_control(
-      'cube_content_name_color',
-      [
-        'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content h1' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_content_global_enable' => 'yes',
-        ],
-      ]
+        'cube_content_name_color',
+        [
+            'label'     => esc_html__('Title Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content h1' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_content_global_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'cube_name_typography',
-        'label'    => esc_html__('Title Typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content h1',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cube_name_typography',
+            'label'    => esc_html__('Title Typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content h1',
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_name_align',
-      [
-        'label'     => esc_html__('Alignment Name', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content h1' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'cube_name_align',
+        [
+            'label'     => esc_html__('Alignment Name', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content h1' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
 
     $this->add_control(
-      'content_cube_color',
-      [
-        'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content p' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_content_global_enable' => 'yes',
-        ],
-      ]
+        'content_cube_color',
+        [
+            'label'     => esc_html__('Content Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content p' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_content_global_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'cube_content_typography',
-        'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content p',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cube_content_typography',
+            'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content p',
+        ]
     );
 
     $this->add_responsive_control(
-      'cube_content_align',
-      [
-        'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'    => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center'  => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'   => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-          'justify' => [
-            'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-justify',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content p' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'cube_content_align',
+        [
+            'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'    => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'  => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'   => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+                'justify' => [
+                    'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-justify',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content p' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
 
     $this->add_control(
-      'reviews_cube_color',
-      [
-        'label'     => esc_html__('Review Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-reviews' => 'color: {{VALUE}};',
-        ],
-        'condition' => [
-          'cube_content_global_enable' => 'yes',
-        ],
-      ]
+        'reviews_cube_color',
+        [
+            'label'     => esc_html__('Review Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .slide-reviews' => 'color: {{VALUE}};',
+            ],
+            'condition' => [
+                'cube_content_global_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'cube_reviews_typography',
-        'label'    => esc_html__('Review Typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .myCube-360 .side-container .slide-reviews',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cube_reviews_typography',
+            'label'    => esc_html__('Review Typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .myCube-360 .side-container .slide-reviews',
+        ]
     );
 
     $this->end_controls_section();
 
     // Overlay styles Section
     $this->start_controls_section(
-      'cube_overlay_section',
-      [
-        'label' => __('Overlay styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'cube_overlay_section',
+        [
+            'label' => __('Overlay styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
 
     $this->add_control(
-      'cube_overlay_bg_enable',
-      [
-        'label'        => __('Overlay Background', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => '',
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_overlay_cube',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content',
-        'condition' => [
-          'cube_overlay_bg_enable' => 'yes',
+        'cube_overlay_bg_enable',
+        [
+            'label'        => __('Overlay Background', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => '',
         ]
-      ]
     );
 
     $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'      => 'cube_overlay_border',
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content',
-        'separator' => 'before',
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_overlay_cube',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-content',
+            'condition' => [
+                'cube_overlay_bg_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Border::get_type(),
+        [
+            'name'      => 'cube_overlay_border',
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-content',
+            'separator' => 'before',
+        ]
     );
 
     $this->end_controls_section();
 
     // Price styles Section
     $this->start_controls_section(
-      'cube_price_section',
-      [
-        'label' => __('Price styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
-    );
-
-    $this->add_control(
-      'cube_change_position_enable',
-      [
-        'label'        => __('Price Position', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('On', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Off', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => '',
-      ]
-    );
-
-    $this->add_control(
-      'price_cube_position',
-      [
-        'label'     => esc_html__('Price Style', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'  => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'right' => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'condition' => [
-          'cube_change_position_enable' => 'yes',
+        'cube_price_section',
+        [
+            'label' => __('Price styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
         ]
-      ]
-    );
-
-    $this->add_responsive_control(
-      'cube_price_top',
-      [
-        'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 8,
-            'step' => 1,
-            'max'  => 130,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 8,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
-        ],
-        'condition'  => [
-          'cube_change_position_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      'cube_price_right',
-      [
-        'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
-        ],
-        'condition'  => [
-          'price_cube_position'         => 'right',
-          'cube_change_position_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      'price_cube_left',
-      [
-        'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px'],
-        'range'      => [
-          'px' => [
-            'min'  => 6,
-            'step' => 1,
-            'max'  => 155,
-          ],
-        ],
-        'default'    => [
-          'unit' => 'px',
-          'size' => 6,
-        ],
-        'selectors'  => [
-          "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
-        ],
-        'condition'  => [
-          'price_cube_position'         => 'left',
-          'cube_change_position_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'background_price_cube',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price',
-        'condition' => [
-          'cube_change_position_enable' => 'yes',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'      => 'cube_price_border',
-        'selector'  => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price',
-        'separator' => 'before',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'cube_price_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'cube_box_shadow_price',
-        'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price',
-      ]
     );
 
     $this->add_control(
-      'price_color_cube',
-      [
-        'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price p' => 'color: {{VALUE}};',
-        ],
-        'separator' => 'before',
-        'condition' => [
-          'cube_change_position_enable' => 'yes',
-        ],
-      ]
+        'cube_change_position_enable',
+        [
+            'label'        => __('Price Position', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('On', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Off', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => '',
+        ]
+    );
+
+    $this->add_control(
+        'price_cube_position',
+        [
+            'label'     => esc_html__('Price Style', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'  => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'right' => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'condition' => [
+                'cube_change_position_enable' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_responsive_control(
+        'cube_price_top',
+        [
+            'label'      => esc_html__('Top', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 8,
+                    'step' => 1,
+                    'max'  => 130,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 8,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'top: {{SIZE}}{{UNIT}};',
+            ],
+            'condition'  => [
+                'cube_change_position_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        'cube_price_right',
+        [
+            'label'      => esc_html__('Right', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'right: {{SIZE}}{{UNIT}}; left: unset;',
+            ],
+            'condition'  => [
+                'price_cube_position'         => 'right',
+                'cube_change_position_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        'price_cube_left',
+        [
+            'label'      => esc_html__('Left', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px'],
+            'range'      => [
+                'px' => [
+                    'min'  => 6,
+                    'step' => 1,
+                    'max'  => 155,
+                ],
+            ],
+            'default'    => [
+                'unit' => 'px',
+                'size' => 6,
+            ],
+            'selectors'  => [
+                "{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price" => 'left: {{SIZE}}{{UNIT}}; right: unset;',
+            ],
+            'condition'  => [
+                'price_cube_position'         => 'left',
+                'cube_change_position_enable' => 'yes',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'cube_price_typography',
-        'label'    => esc_html__('Price Typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price p',
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'background_price_cube',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price',
+            'condition' => [
+                'cube_change_position_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Border::get_type(),
+        [
+            'name'      => 'cube_price_border',
+            'selector'  => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price',
+            'separator' => 'before',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'cube_price_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'cube_box_shadow_price',
+            'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price',
+        ]
+    );
+
+    $this->add_control(
+        'price_color_cube',
+        [
+            'label'     => esc_html__('Price Color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .myCube-360 .cube-container .side-container .cube-wrapper-price p' => 'color: {{VALUE}};',
+            ],
+            'separator' => 'before',
+            'condition' => [
+                'cube_change_position_enable' => 'yes',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'cube_price_typography',
+            'label'    => esc_html__('Price Typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .myCube-360 .side-container .cube-wrapper-price p',
+        ]
     );
 
     $this->end_controls_section();
@@ -3477,7 +3477,7 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access protected
    */
@@ -3486,18 +3486,18 @@ class TestimonialsCarousel_Cube_360 extends Widget_Base
     $settings = $this->get_settings_for_display();
     if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") {
       $this->add_render_attribute(
-        'my_swiper',
-        [
-          'class'                            => ['slider-params'],
-          'data-startcoordinatex-myswiper'   => esc_attr($settings['cube_start_coordinate_x']),
-          'data-startcoordinatey-myswiper'   => esc_attr($settings['cube_start_coordinate_y']),
-          'data-animationenable-myswiper'    => esc_attr($settings['animation_enable']),
-          'data-animationrotationx-myswiper' => esc_attr($settings['animation_rotation_x']),
-          'data-animationrotationy-myswiper' => esc_attr($settings['animation_rotation_y']),
-          'data-animationspeed-myswiper'     => esc_attr($settings['animation_speed']),
-          'data-rotationspeed-myswiper'      => esc_attr($settings['rotation_speed']),
-          'data-cursorgrabenable-myswiper'   => esc_attr($settings['cursor_grab_enable']),
-        ]
+          'my_swiper',
+          [
+              'class'                            => ['slider-params'],
+              'data-startcoordinatex-myswiper'   => esc_attr($settings['cube_start_coordinate_x']),
+              'data-startcoordinatey-myswiper'   => esc_attr($settings['cube_start_coordinate_y']),
+              'data-animationenable-myswiper'    => esc_attr($settings['animation_enable']),
+              'data-animationrotationx-myswiper' => esc_attr($settings['animation_rotation_x']),
+              'data-animationrotationy-myswiper' => esc_attr($settings['animation_rotation_y']),
+              'data-animationspeed-myswiper'     => esc_attr($settings['animation_speed']),
+              'data-rotationspeed-myswiper'      => esc_attr($settings['rotation_speed']),
+              'data-cursorgrabenable-myswiper'   => esc_attr($settings['cursor_grab_enable']),
+          ]
       );
     }
 

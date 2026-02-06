@@ -20,8 +20,8 @@ function get_default_creative_template($settings, $attributes)
       <div class="swiper-wrapper">
         <?php $counter = 1;
         foreach ($slide as $item) {
-          $alt = $item['slide_image']['alt'] ?? '' ?>
-          <div class="swiper-slide" id="slide-<?php echo esc_attr($counter); ?>">
+          $alt = esc_attr($item['slide_image']['alt'] ?? ''); ?>
+          <div class="swiper-slide" id="<?php echo esc_attr('slide-' . $counter); ?>">
             <?php if (isset($item['slide_image'], $item['slide_image']['url']) && !empty($item['slide_image']['url'])) { ?>
               <img src="<?php echo esc_url($item['slide_image']['url']); ?>"
                    alt="<?php echo esc_attr($alt); ?>">
@@ -36,8 +36,10 @@ function get_default_creative_template($settings, $attributes)
       <div class="creative__wrapper-content">
         <?php $counter_content = 1;
         foreach ($slide as $item_content) { ?>
-          <div class="creative__slide-content <?php if ($counter_content === 1) { ?> active <?php } ?>"
-               data-id="slide-<?php echo esc_attr($counter_content); ?>">
+          <div class="creative__slide-content <?php if ($counter_content === 1) {
+            echo esc_attr('active');
+          } ?>"
+               data-id="<?php echo esc_attr('slide-' . $counter_content); ?>">
             <?php if ($item_content['slide_title_enable'] === 'yes') { ?>
               <div class="creative__slide-title">
                 <?php echo wp_kses_post($item_content['slide_title']); ?>
@@ -54,13 +56,13 @@ function get_default_creative_template($settings, $attributes)
     <?php }
 
     if (
-      esc_attr($settings['navigation']) === "dots" || esc_attr($settings['navigation']) === "both"
+        esc_attr($settings['navigation']) === "dots" || esc_attr($settings['navigation']) === "both"
     ) { ?>
       <div class="swiper-pagination"></div>
     <?php }
 
     if (
-      esc_attr($settings['navigation']) === "both" || esc_attr($settings['navigation']) === "arrows"
+        esc_attr($settings['navigation']) === "both" || esc_attr($settings['navigation']) === "arrows"
     ) { ?>
       <div class="swiper-button-next">
         <?php Icons_Manager::render_icon($settings['icon_scroll_right'], ['aria-hidden' => 'true']) ?>

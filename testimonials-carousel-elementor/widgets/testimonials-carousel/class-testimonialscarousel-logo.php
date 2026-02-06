@@ -9,7 +9,7 @@
  * @copyright  2024 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      11.6.2
+ * @since      11.7.0
  * php version 7.4.1
  */
 
@@ -30,7 +30,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Logo widget class.
  *
- * @since 11.6.2
+ * @since 11.7.0
  */
 class TestimonialsCarousel_Logo extends Widget_Base
 {
@@ -63,7 +63,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -77,7 +77,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -91,7 +91,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -110,7 +110,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access public
    *
@@ -145,16 +145,16 @@ class TestimonialsCarousel_Logo extends Widget_Base
   protected function get_default_slide()
   {
     return [
-      'slide_content'   => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'testimonials-carousel-elementor'),
-      'slide_image'     => [
-        'url' => Utils::get_placeholder_image_src(),
-      ],
-      'slide_logo'      => [
-        'url' => Utils::get_placeholder_image_src(),
-      ],
-      'slide_name'      => __('John Doe', 'testimonials-carousel-elementor'),
-      'slide_subtitle'  => __('Manager', 'testimonials-carousel-elementor'),
-      'slide_read_more' => __('Read more', 'testimonials-carousel-elementor'),
+        'slide_content'   => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'testimonials-carousel-elementor'),
+        'slide_image'     => [
+            'url' => Utils::get_placeholder_image_src(),
+        ],
+        'slide_logo'      => [
+            'url' => Utils::get_placeholder_image_src(),
+        ],
+        'slide_name'      => __('John Doe', 'testimonials-carousel-elementor'),
+        'slide_subtitle'  => __('Manager', 'testimonials-carousel-elementor'),
+        'slide_read_more' => __('Read more', 'testimonials-carousel-elementor'),
     ];
   }
 
@@ -163,7 +163,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access protected
    */
@@ -171,969 +171,969 @@ class TestimonialsCarousel_Logo extends Widget_Base
   {
     // Content Section
     $this->start_controls_section(
-      'section_content',
-      [
-        'label' => __('Content', 'testimonials-carousel-elementor'),
-      ]
+        'section_content',
+        [
+            'label' => __('Content', 'testimonials-carousel-elementor'),
+        ]
     );
 
-    $api_key          = get_option('elementor_openai_api_key');
-    $api_key_validate = get_option('testimonials_openai_validate');
+    $api_key          = esc_html(get_option('elementor_openai_api_key'));
+    $api_key_validate = esc_html(get_option('testimonials_openai_validate'));
 
     $repeater = new Repeater();
     $repeater->add_control(
-      'slide_show_image',
-      [
-        'label'        => __('Show Image', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'slide_show_image',
+        [
+            'label'        => __('Show Image', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
     $repeater->add_control(
-      'slide_image',
-      [
-        'label'     => __('Choose square or round Image', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::MEDIA,
-        'default'   => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'        => [
-          'active' => false,
-        ],
-        'condition' => [
-          'slide_show_image' => 'yes',
-        ],
-      ]
+        'slide_image',
+        [
+            'label'     => __('Choose square or round Image', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::MEDIA,
+            'default'   => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'        => [
+                'active' => false,
+            ],
+            'condition' => [
+                'slide_show_image' => 'yes',
+            ],
+        ]
     );
     $repeater->add_control(
-      'slide_name',
-      [
-        'label'              => __('Name', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('John Doe', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-      ]
+        'slide_name',
+        [
+            'label'              => __('Name', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('John Doe', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+        ]
     );
     $repeater->add_control(
-      'slide_show_logo',
-      [
-        'label'        => __('Show Logo', 'testimonials-carousel-elementor'),
-        'type'         => Controls_Manager::SWITCHER,
-        'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value' => 'yes',
-        'default'      => 'yes',
-      ]
+        'slide_show_logo',
+        [
+            'label'        => __('Show Logo', 'testimonials-carousel-elementor'),
+            'type'         => Controls_Manager::SWITCHER,
+            'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value' => 'yes',
+            'default'      => 'yes',
+        ]
     );
     $repeater->add_control(
-      'slide_logo',
-      [
-        'label'     => __('Choose Logo', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::MEDIA,
-        'default'   => [
-          'url' => Utils::get_placeholder_image_src(),
-        ],
-        'ai'        => [
-          'active' => false,
-        ],
-        'condition' => [
-          'slide_show_logo' => 'yes',
-        ],
-      ]
+        'slide_logo',
+        [
+            'label'     => __('Choose Logo', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::MEDIA,
+            'default'   => [
+                'url' => Utils::get_placeholder_image_src(),
+            ],
+            'ai'        => [
+                'active' => false,
+            ],
+            'condition' => [
+                'slide_show_logo' => 'yes',
+            ],
+        ]
     );
     $repeater->add_control(
-      'slide_content',
-      [
-        'label'              => __('Content', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::WYSIWYG,
-        'default'            => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'testimonials-carousel-elementor'),
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-      ]
+        'slide_content',
+        [
+            'label'              => __('Content', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::WYSIWYG,
+            'default'            => __('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'testimonials-carousel-elementor'),
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+        ]
     );
     $repeater->add_control(
-      'slide_read_more',
-      [
-        'label'              => __('Read more button', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::TEXT,
-        'default'            => __('Read more...', 'testimonials-carousel-elementor'),
-        'label_block'        => true,
-        'frontend_available' => true,
-        'dynamic'            => [
-          'active' => true,
-        ],
-        'ai'                 => [
-          'active' => false,
-        ],
-      ]
+        'slide_read_more',
+        [
+            'label'              => __('Read more button', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::TEXT,
+            'default'            => __('Read more...', 'testimonials-carousel-elementor'),
+            'label_block'        => true,
+            'frontend_available' => true,
+            'dynamic'            => [
+                'active' => true,
+            ],
+            'ai'                 => [
+                'active' => false,
+            ],
+        ]
     );
 
     if (!empty($api_key) && $api_key_validate !== '0') {
       $repeater->add_control(
-        'slide_ai_enable',
-        [
-          'label'        => __('OpenAI', 'testimonials-carousel-elementor'),
-          'type'         => Controls_Manager::SWITCHER,
-          'label_on'     => __('Show', 'testimonials-carousel-elementor'),
-          'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
-          'return_value' => 'yes',
-          'default'      => 'yes',
-        ]
+          'slide_ai_enable',
+          [
+              'label'        => __('OpenAI', 'testimonials-carousel-elementor'),
+              'type'         => Controls_Manager::SWITCHER,
+              'label_on'     => __('Show', 'testimonials-carousel-elementor'),
+              'label_off'    => __('Hide', 'testimonials-carousel-elementor'),
+              'return_value' => 'yes',
+              'default'      => 'yes',
+          ]
       );
 
       $repeater->add_control(
-        'slide_ai_content',
-        [
-          'label'     => __('Prompt', 'testimonials-carousel-elementor'),
-          'type'      => Controls_Manager::TEXTAREA,
-          'default'   => __('Write me a [friendly] review of [500] characters [en] language, from a client of the company [IT soft touch] about [importing cars from the USA]', 'testimonials-carousel-elementor'),
-          'rows'      => 20,
-          'condition' => [
-            'slide_ai_enable' => 'yes',
-          ],
-          'ai'        => [
-            'active' => false,
-          ],
-        ]
+          'slide_ai_content',
+          [
+              'label'     => __('Prompt', 'testimonials-carousel-elementor'),
+              'type'      => Controls_Manager::TEXTAREA,
+              'default'   => __('Write me a [friendly] review of [500] characters [en] language, from a client of the company [IT soft touch] about [importing cars from the USA]', 'testimonials-carousel-elementor'),
+              'rows'      => 20,
+              'condition' => [
+                  'slide_ai_enable' => 'yes',
+              ],
+              'ai'        => [
+                  'active' => false,
+              ],
+          ]
       );
 
       $repeater->add_control(
-        'process_ai_button',
-        [
-          'type'               => Controls_Manager::BUTTON,
-          'text'               => __('Process', 'testimonials-carousel-elementor'),
-          'frontend_available' => true,
-          'dynamic'            => [
-            'active' => true,
-          ],
-          'condition'          => [
-            'slide_ai_enable' => 'yes',
-          ],
-          'event'              => 'send_prompt',
-        ]
+          'process_ai_button',
+          [
+              'type'               => Controls_Manager::BUTTON,
+              'text'               => __('Process', 'testimonials-carousel-elementor'),
+              'frontend_available' => true,
+              'dynamic'            => [
+                  'active' => true,
+              ],
+              'condition'          => [
+                  'slide_ai_enable' => 'yes',
+              ],
+              'event'              => 'send_prompt',
+          ]
       );
     }
 
     $this->add_control(
-      'slide',
-      [
-        'label'              => __('Repeater Slide', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::REPEATER,
-        'fields'             => $repeater->get_controls(),
-        'title_field'        => 'Slide',
-        'frontend_available' => true,
-        'default'            => [$this->get_default_slide()],
-      ]
+        'slide',
+        [
+            'label'              => __('Repeater Slide', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::REPEATER,
+            'fields'             => $repeater->get_controls(),
+            'title_field'        => 'Slide',
+            'frontend_available' => true,
+            'default'            => [$this->get_default_slide()],
+        ]
     );
     $this->end_controls_section();
 
     // Global Options Section
     $this->start_controls_section(
-      'section_global_options',
-      [
-        'label' => esc_html__('Global Options', 'testimonials-carousel-elementor'),
-      ]
+        'section_global_options',
+        [
+            'label' => esc_html__('Global Options', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $this->add_control(
-      'slider_global_show_images',
-      [
-        'label'              => esc_html__('Show Images', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SWITCHER,
-        'label_on'           => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'          => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value'       => 'yes',
-        'default'            => 'yes',
-        'frontend_available' => true,
-      ]
+        'slider_global_show_images',
+        [
+            'label'              => esc_html__('Show Images', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SWITCHER,
+            'label_on'           => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'          => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value'       => 'yes',
+            'default'            => 'yes',
+            'frontend_available' => true,
+        ]
     );
 
     $this->add_control(
-      'slider_global_show_logos',
-      [
-        'label'              => esc_html__('Show Logos', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SWITCHER,
-        'label_on'           => __('Show', 'testimonials-carousel-elementor'),
-        'label_off'          => __('Hide', 'testimonials-carousel-elementor'),
-        'return_value'       => 'yes',
-        'default'            => 'yes',
-        'frontend_available' => true,
-      ]
+        'slider_global_show_logos',
+        [
+            'label'              => esc_html__('Show Logos', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SWITCHER,
+            'label_on'           => __('Show', 'testimonials-carousel-elementor'),
+            'label_off'          => __('Hide', 'testimonials-carousel-elementor'),
+            'return_value'       => 'yes',
+            'default'            => 'yes',
+            'frontend_available' => true,
+        ]
     );
 
     $this->end_controls_section();
 
     // Additional Options Section
     $this->start_controls_section(
-      'section_additional_options',
-      [
-        'label' => esc_html__('Additional Options', 'testimonials-carousel-elementor'),
-      ]
+        'section_additional_options',
+        [
+            'label' => esc_html__('Additional Options', 'testimonials-carousel-elementor'),
+        ]
     );
 
     $slides_to_show = range(1, 3);
     $slides_to_show = array_combine($slides_to_show, $slides_to_show);
 
     $this->add_control(
-      'slider_random',
-      [
-        'label'              => esc_html__('Random Order', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SWITCHER,
-        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
-        'label_off'          => __('No', 'testimonials-carousel-elementor'),
-        'return_value'       => 'yes',
-        'default'            => 'no',
-        'frontend_available' => true,
-      ]
+        'slider_random',
+        [
+            'label'              => esc_html__('Random Order', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SWITCHER,
+            'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+            'label_off'          => __('No', 'testimonials-carousel-elementor'),
+            'return_value'       => 'yes',
+            'default'            => 'no',
+            'frontend_available' => true,
+        ]
     );
 
     $this->add_responsive_control(
-      'slides_to_show',
-      [
-        'label'              => esc_html__('Slides to show', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SELECT,
-        'options'            => [
-            '' => esc_html__('Default', 'testimonials-carousel-elementor'),
-          ] + $slides_to_show,
-        'frontend_available' => true,
-      ]
+        'slides_to_show',
+        [
+            'label'              => esc_html__('Slides to show', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SELECT,
+            'options'            => [
+                    '' => esc_html__('Default', 'testimonials-carousel-elementor'),
+                ] + $slides_to_show,
+            'frontend_available' => true,
+        ]
     );
 
     $this->add_responsive_control(
-      'slides_to_scroll',
-      [
-        'label'              => esc_html__('Slides to scroll', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SELECT,
-        'description'        => esc_html__('Set how many slides are scrolled per swipe.', 'testimonials-carousel-elementor'),
-        'options'            => [
-          ''  => esc_html__('Default', 'testimonials-carousel-elementor'),
-          '1' => esc_html__(1, 'testimonials-carousel-elementor'),
-        ],
-        'frontend_available' => true,
-      ]
-    );
-
-    $this->add_control(
-      'slider_loop',
-      [
-        'label'              => esc_html__('Loop', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SWITCHER,
-        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
-        'label_off'          => __('No', 'testimonials-carousel-elementor'),
-        'return_value'       => 'yes',
-        'default'            => 'yes',
-        'frontend_available' => true,
-      ]
-    );
-
-    $this->add_control(
-      'show_line_text',
-      [
-        'label'              => esc_html__('Show Lines With Text', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'min'                => 1,
-        'max'                => 21,
-        'step'               => 1,
-        'default'            => 7,
-        'frontend_available' => true,
-      ]
-    );
-
-    $this->add_control(
-      'autoplay',
-      [
-        'label'              => esc_html__('Autoplay', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SELECT,
-        'default'            => 'yes',
-        'options'            => [
-          'yes' => esc_html__('Yes', 'testimonials-carousel-elementor'),
-          'no'  => esc_html__('No', 'testimonials-carousel-elementor'),
-        ],
-        'frontend_available' => true,
-      ]
-    );
-
-    $this->add_control(
-      'autoplay_speed',
-      [
-        'label'              => esc_html__('Autoplay speed', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::NUMBER,
-        'default'            => 5000,
-        'frontend_available' => true,
-        'condition'          => [
-          'autoplay' => 'yes',
+        'slides_to_scroll',
+        [
+            'label'              => esc_html__('Slides to scroll', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SELECT,
+            'description'        => esc_html__('Set how many slides are scrolled per swipe.', 'testimonials-carousel-elementor'),
+            'options'            => [
+                ''  => esc_html__('Default', 'testimonials-carousel-elementor'),
+                '1' => esc_html__(1, 'testimonials-carousel-elementor'),
+            ],
+            'frontend_available' => true,
         ]
-      ]
     );
 
     $this->add_control(
-      'disable_interaction',
-      [
-        'label'              => esc_html__('Disable On Interaction', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SWITCHER,
-        'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
-        'label_off'          => __('No', 'testimonials-carousel-elementor'),
-        'return_value'       => 'yes',
-        'default'            => 'yes',
-        'frontend_available' => true,
-        'condition'          => [
-          'autoplay' => 'yes',
+        'slider_loop',
+        [
+            'label'              => esc_html__('Loop', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SWITCHER,
+            'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+            'label_off'          => __('No', 'testimonials-carousel-elementor'),
+            'return_value'       => 'yes',
+            'default'            => 'yes',
+            'frontend_available' => true,
         ]
-      ]
     );
 
     $this->add_control(
-      'navigation',
-      [
-        'label'              => esc_html__('Navigation', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SELECT,
-        'default'            => 'both',
-        'options'            => [
-          'both'   => esc_html__('Arrows and Dots', 'testimonials-carousel-elementor'),
-          'arrows' => esc_html__('Arrows', 'testimonials-carousel-elementor'),
-          'dots'   => esc_html__('Dots', 'testimonials-carousel-elementor'),
-          'none'   => esc_html__('None', 'testimonials-carousel-elementor'),
-        ],
-        'frontend_available' => true,
-      ]
+        'show_line_text',
+        [
+            'label'              => esc_html__('Show Lines With Text', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'min'                => 1,
+            'max'                => 21,
+            'step'               => 1,
+            'default'            => 7,
+            'frontend_available' => true,
+        ]
+    );
+
+    $this->add_control(
+        'autoplay',
+        [
+            'label'              => esc_html__('Autoplay', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SELECT,
+            'default'            => 'yes',
+            'options'            => [
+                'yes' => esc_html__('Yes', 'testimonials-carousel-elementor'),
+                'no'  => esc_html__('No', 'testimonials-carousel-elementor'),
+            ],
+            'frontend_available' => true,
+        ]
+    );
+
+    $this->add_control(
+        'autoplay_speed',
+        [
+            'label'              => esc_html__('Autoplay speed', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::NUMBER,
+            'default'            => 5000,
+            'frontend_available' => true,
+            'condition'          => [
+                'autoplay' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'disable_interaction',
+        [
+            'label'              => esc_html__('Disable On Interaction', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SWITCHER,
+            'label_on'           => __('Yes', 'testimonials-carousel-elementor'),
+            'label_off'          => __('No', 'testimonials-carousel-elementor'),
+            'return_value'       => 'yes',
+            'default'            => 'yes',
+            'frontend_available' => true,
+            'condition'          => [
+                'autoplay' => 'yes',
+            ]
+        ]
+    );
+
+    $this->add_control(
+        'navigation',
+        [
+            'label'              => esc_html__('Navigation', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SELECT,
+            'default'            => 'both',
+            'options'            => [
+                'both'   => esc_html__('Arrows and Dots', 'testimonials-carousel-elementor'),
+                'arrows' => esc_html__('Arrows', 'testimonials-carousel-elementor'),
+                'dots'   => esc_html__('Dots', 'testimonials-carousel-elementor'),
+                'none'   => esc_html__('None', 'testimonials-carousel-elementor'),
+            ],
+            'frontend_available' => true,
+        ]
     );
 
     $this->end_controls_section();
 
     // General styles Section
     $this->start_controls_section(
-      'general_styles_section',
-      [
-        'label' => esc_html__('General styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'general_styles_section',
+        [
+            'label' => esc_html__('General styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
     $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'     => 'background',
-        'types'    => ['classic', 'gradient'],
-        'selector' => '{{WRAPPER}} .slider-logo-container-background',
-      ]
+        Group_Control_Background::get_type(),
+        [
+            'name'     => 'background',
+            'types'    => ['classic', 'gradient'],
+            'selector' => '{{WRAPPER}} .slider-logo-container-background',
+        ]
     );
     $this->add_responsive_control(
-      'slider_head_align',
-      [
-        'label'     => esc_html__('Alignment', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'flex-start'    => [
-            'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-start-h',
-          ],
-          'center'        => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-center-h',
-          ],
-          'flex-end'      => [
-            'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-end-h',
-          ],
-          'space-between' => [
-            'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-between-h',
-          ],
-          'space-around'  => [
-            'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-around-h',
-          ],
-          'space-evenly'  => [
-            'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-evenly-h',
-          ],
-        ],
-        'default'   => 'space-between',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-block' => 'justify-content: {{VALUE}}',
-        ],
-      ]
+        'slider_head_align',
+        [
+            'label'     => esc_html__('Alignment', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start'    => [
+                    'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-start-h',
+                ],
+                'center'        => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-center-h',
+                ],
+                'flex-end'      => [
+                    'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-end-h',
+                ],
+                'space-between' => [
+                    'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-between-h',
+                ],
+                'space-around'  => [
+                    'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-around-h',
+                ],
+                'space-evenly'  => [
+                    'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-evenly-h',
+                ],
+            ],
+            'default'   => 'space-between',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-block' => 'justify-content: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_header_space',
-      [
-        'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 140,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-block' => 'gap: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_header_space',
+        [
+            'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 140,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-block' => 'gap: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->end_controls_section();
 
     // Logo style Section
     $this->start_controls_section(
-      'logo_styles_section',
-      [
-        'label' => esc_html__('Logo styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'logo_styles_section',
+        [
+            'label' => esc_html__('Logo styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
     $this->add_responsive_control(
-      'slider_logo_position',
-      [
-        'label'     => esc_html__('Logo Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'row-reverse' => [
-            'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-start',
-          ],
-          'row'         => [
-            'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-end',
-          ],
-        ],
-        'default'   => 'row',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-block' => 'flex-direction: {{VALUE}}',
-        ],
-      ]
+        'slider_logo_position',
+        [
+            'label'     => esc_html__('Logo Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'row-reverse' => [
+                    'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-start',
+                ],
+                'row'         => [
+                    'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-end',
+                ],
+            ],
+            'default'   => 'row',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-block' => 'flex-direction: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_logo_align',
-      [
-        'label'     => esc_html__('Alignment Logo', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logotype' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'slider_logo_align',
+        [
+            'label'     => esc_html__('Alignment Logo', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logotype' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_width_block_logo',
-      [
-        'label'      => esc_html__('Width Block Logo', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logotype' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_width_block_logo',
+        [
+            'label'      => esc_html__('Width Block Logo', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logotype' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'slider_width_logo',
-      [
-        'label'      => esc_html__('Width Logo', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logotype img' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'     => 'slider_logo_border',
-        'selector' => '{{WRAPPER}} .slide-logotype img',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'slider_logo_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logotype img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
+        'slider_width_logo',
+        [
+            'label'      => esc_html__('Width Logo', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logotype img' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'slider_logo_box_shadow',
-        'selector' => '{{WRAPPER}} .slide-logotype img',
-      ]
+        Group_Control_Border::get_type(),
+        [
+            'name'     => 'slider_logo_border',
+            'selector' => '{{WRAPPER}} .slide-logotype img',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'slider_logo_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logotype img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'slider_logo_box_shadow',
+            'selector' => '{{WRAPPER}} .slide-logotype img',
+        ]
     );
     $this->end_controls_section();
 
     // Title style Section
     $this->start_controls_section(
-      'title_styles_section',
-      [
-        'label' => esc_html__('Title styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'title_styles_section',
+        [
+            'label' => esc_html__('Title styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
     $this->add_responsive_control(
-      'slider_width_title',
-      [
-        'label'      => esc_html__('Width Title', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-basic-info' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_width_title',
+        [
+            'label'      => esc_html__('Width Title', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-basic-info' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_title_align',
-      [
-        'label'     => esc_html__('Alignment Title', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-basic-info' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'slider_title_align',
+        [
+            'label'     => esc_html__('Alignment Title', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-basic-info' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_width_block_title',
-      [
-        'label'      => esc_html__('Width Block Title', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-main-block' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_width_block_title',
+        [
+            'label'      => esc_html__('Width Block Title', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-main-block' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_title_justify',
-      [
-        'label'     => esc_html__('Justified', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'flex-start'    => [
-            'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-start-h',
-          ],
-          'center'        => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-center-h',
-          ],
-          'flex-end'      => [
-            'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-end-h',
-          ],
-          'space-between' => [
-            'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-between-h',
-          ],
-          'space-around'  => [
-            'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-around-h',
-          ],
-          'space-evenly'  => [
-            'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-evenly-h',
-          ],
-        ],
-        'default'   => 'center',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-main-block' => 'justify-content: {{VALUE}}',
-        ],
-      ]
+        'slider_title_justify',
+        [
+            'label'     => esc_html__('Justified', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start'    => [
+                    'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-start-h',
+                ],
+                'center'        => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-center-h',
+                ],
+                'flex-end'      => [
+                    'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-end-h',
+                ],
+                'space-between' => [
+                    'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-between-h',
+                ],
+                'space-around'  => [
+                    'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-around-h',
+                ],
+                'space-evenly'  => [
+                    'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-evenly-h',
+                ],
+            ],
+            'default'   => 'center',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-main-block' => 'justify-content: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_title_space',
-      [
-        'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 140,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-main-block' => 'gap: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_title_space',
+        [
+            'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 140,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-main-block' => 'gap: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_title_space',
-      [
-        'label'     => esc_html__('Spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 40,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .slide-basic-info' => 'gap: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_title_space',
+        [
+            'label'     => esc_html__('Spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 40,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .slide-basic-info' => 'gap: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_image_position',
-      [
-        'label'     => esc_html__('Images Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'row'         => [
-            'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-start',
-          ],
-          'row-reverse' => [
-            'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-end',
-          ],
-        ],
-        'default'   => 'row',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-main-block' => 'flex-direction: {{VALUE}}',
-        ],
-        'separator' => 'before',
-      ]
+        'slider_image_position',
+        [
+            'label'     => esc_html__('Images Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'row'         => [
+                    'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-start',
+                ],
+                'row-reverse' => [
+                    'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-end',
+                ],
+            ],
+            'default'   => 'row',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-main-block' => 'flex-direction: {{VALUE}}',
+            ],
+            'separator' => 'before',
+        ]
     );
     $this->add_responsive_control(
-      'slider_width_block_image',
-      [
-        'label'      => esc_html__('Width Block Image', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-image' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_width_block_image',
+        [
+            'label'      => esc_html__('Width Block Image', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-image' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_images_align',
-      [
-        'label'     => esc_html__('Alignment Images', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'flex-start' => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center'     => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'flex-end'   => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slide-logo-image' => 'justify-content: {{VALUE}}',
-        ],
-      ]
+        'slider_images_align',
+        [
+            'label'     => esc_html__('Alignment Images', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start' => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'     => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'flex-end'   => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slide-logo-image' => 'justify-content: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'slider_width_images',
-      [
-        'label'      => esc_html__('Width Images', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-image img' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'slider_width_images',
+        [
+            'label'      => esc_html__('Width Images', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-image img' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'slider_height_images',
-      [
-        'label'      => esc_html__('Height Images', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-image img' => 'height: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'     => 'slider_image_border',
-        'selector' => '{{WRAPPER}} .slide-logo-image img',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'slider_image_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .slide-logo-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
+        'slider_height_images',
+        [
+            'label'      => esc_html__('Height Images', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-image img' => 'height: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'slider_image_box_shadow',
-        'selector' => '{{WRAPPER}} .slide-logo-image img',
-      ]
+        Group_Control_Border::get_type(),
+        [
+            'name'     => 'slider_image_border',
+            'selector' => '{{WRAPPER}} .slide-logo-image img',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'slider_image_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .slide-logo-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'slider_image_box_shadow',
+            'selector' => '{{WRAPPER}} .slide-logo-image img',
+        ]
     );
     $this->end_controls_section();
 
     // Slider styles Section
     $this->start_controls_section(
-      'slider_styles_section',
-      [
-        'label' => __('Slider styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'slider_styles_section',
+        [
+            'label' => __('Slider styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
     $this->add_control(
-      'slider_name_color',
-      [
-        'label'     => esc_html__('Name color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .swiper-wrapper .slide-logo-title' => 'color: {{VALUE}};',
-        ],
-      ]
+        'slider_name_color',
+        [
+            'label'     => esc_html__('Name color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .swiper-wrapper .slide-logo-title' => 'color: {{VALUE}};',
+            ],
+        ]
     );
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'slider_name_typography',
-        'label'    => esc_html__('Name typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .swiper-wrapper .slide-logo-title',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'slider_name_typography',
+            'label'    => esc_html__('Name typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .swiper-wrapper .slide-logo-title',
+        ]
     );
     $this->add_control(
-      'slider_content_color',
-      [
-        'label'     => esc_html__('Content color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .swiper-wrapper .slide-description' => 'color: {{VALUE}};',
-        ],
-      ]
+        'slider_content_color',
+        [
+            'label'     => esc_html__('Content color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .swiper-wrapper .slide-description' => 'color: {{VALUE}};',
+            ],
+        ]
     );
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'slider_content_typography',
-        'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .swiper-wrapper .slide-description',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'slider_content_typography',
+            'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .swiper-wrapper .slide-description',
+        ]
     );
     $this->add_responsive_control(
-      'slider_content_align',
-      [
-        'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'    => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center'  => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'   => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-          'justify' => [
-            'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-justify',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slide-description' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'slider_content_align',
+        [
+            'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'    => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'  => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'   => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+                'justify' => [
+                    'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-justify',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slide-description' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_control(
-      'slider_read_more_color',
-      [
-        'label'     => esc_html__('Read more button color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .swiper-wrapper .slide-read-more' => 'color: {{VALUE}};',
-        ],
-      ]
+        'slider_read_more_color',
+        [
+            'label'     => esc_html__('Read more button color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .swiper-wrapper .slide-read-more' => 'color: {{VALUE}};',
+            ],
+        ]
     );
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'slider_read_more_typography',
-        'label'    => esc_html__('Read more button typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .swiper-wrapper .slide-read-more',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'slider_read_more_typography',
+            'label'    => esc_html__('Read more button typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .swiper-wrapper .slide-read-more',
+        ]
     );
     $this->add_responsive_control(
-      'slider_read_align',
-      [
-        'label'     => esc_html__('Alignment Button', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'right',
-        'selectors' => [
-          '{{WRAPPER}} .slide-read-more' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'slider_read_align',
+        [
+            'label'     => esc_html__('Alignment Button', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'right',
+            'selectors' => [
+                '{{WRAPPER}} .slide-read-more' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->end_controls_section();
 
     // Popup styles Section
     $this->start_controls_section(
-      'popup_styles_section',
-      [
-        'label' => __('Popup styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'popup_styles_section',
+        [
+            'label' => __('Popup styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
 
     $this->add_control(
-      'popup_position',
-      [
-        'label'              => esc_html__('Position', 'testimonials-carousel-elementor'),
-        'type'               => Controls_Manager::SELECT,
-        'default'            => '',
-        'options'            => [
-          ''         => esc_html__('Default', 'testimonials-carousel-elementor'),
-          'absolute' => esc_html__('Absolute', 'testimonials-carousel-elementor'),
-          'fixed'    => esc_html__('Fixed', 'testimonials-carousel-elementor'),
-        ],
-        'selectors'          => [
-          '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'position: {{VALUE}};',
-        ],
-        'frontend_available' => true,
-      ]
+        'popup_position',
+        [
+            'label'              => esc_html__('Position', 'testimonials-carousel-elementor'),
+            'type'               => Controls_Manager::SELECT,
+            'default'            => '',
+            'options'            => [
+                ''         => esc_html__('Default', 'testimonials-carousel-elementor'),
+                'absolute' => esc_html__('Absolute', 'testimonials-carousel-elementor'),
+                'fixed'    => esc_html__('Fixed', 'testimonials-carousel-elementor'),
+            ],
+            'selectors'          => [
+                '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'position: {{VALUE}};',
+            ],
+            'frontend_available' => true,
+        ]
     );
 
     $left  = esc_html__('Left', 'testimonials-carousel-elementor');
@@ -1143,839 +1143,839 @@ class TestimonialsCarousel_Logo extends Widget_Base
     $end   = !is_rtl() ? $right : $left;
 
     $this->add_control(
-      '_offset_popup_orientation_h',
-      [
-        'label'       => esc_html__('Horizontal Orientation', 'testimonials-carousel-elementor'),
-        'type'        => Controls_Manager::CHOOSE,
-        'toggle'      => false,
-        'default'     => 'start',
-        'options'     => [
-          'start' => [
-            'title' => $start,
-            'icon'  => 'eicon-h-align-left',
-          ],
-          'end'   => [
-            'title' => $end,
-            'icon'  => 'eicon-h-align-right',
-          ],
-        ],
-        'classes'     => 'elementor-control-start-end',
-        'render_type' => 'ui',
-        'condition'   => [
-          'popup_position!' => '',
-        ],
-      ]
+        '_offset_popup_orientation_h',
+        [
+            'label'       => esc_html__('Horizontal Orientation', 'testimonials-carousel-elementor'),
+            'type'        => Controls_Manager::CHOOSE,
+            'toggle'      => false,
+            'default'     => 'start',
+            'options'     => [
+                'start' => [
+                    'title' => $start,
+                    'icon'  => 'eicon-h-align-left',
+                ],
+                'end'   => [
+                    'title' => $end,
+                    'icon'  => 'eicon-h-align-right',
+                ],
+            ],
+            'classes'     => 'elementor-control-start-end',
+            'render_type' => 'ui',
+            'condition'   => [
+                'popup_position!' => '',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      '_offset_popup_x',
-      [
-        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'range'      => [
-          'px' => [
-            'min' => -1000,
-            'max' => 1000,
-          ],
-          '%'  => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vw' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vh' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-        ],
-        'default'    => [
-          'size' => 0,
-        ],
-        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
-        'selectors'  => [
-          'body:not(.rtl) {{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'left: {{SIZE}}{{UNIT}}',
-          'body.rtl {{WRAPPER}} .mySwiperLogo-modal#slider-modal'       => 'right: {{SIZE}}{{UNIT}}',
-        ],
-        'condition'  => [
-          '_offset_popup_orientation_h!' => 'end',
-          'popup_position!'              => '',
-        ],
-      ]
+        '_offset_popup_x',
+        [
+            'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'range'      => [
+                'px' => [
+                    'min' => -1000,
+                    'max' => 1000,
+                ],
+                '%'  => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vw' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vh' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+            ],
+            'default'    => [
+                'size' => 0,
+            ],
+            'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
+            'selectors'  => [
+                'body:not(.rtl) {{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'left: {{SIZE}}{{UNIT}}',
+                'body.rtl {{WRAPPER}} .mySwiperLogo-modal#slider-modal'       => 'right: {{SIZE}}{{UNIT}}',
+            ],
+            'condition'  => [
+                '_offset_popup_orientation_h!' => 'end',
+                'popup_position!'              => '',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      '_offset_popup_x_end',
-      [
-        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'range'      => [
-          'px' => [
-            'min' => -1000,
-            'max' => 1000,
-          ],
-          '%'  => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vw' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vh' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-        ],
-        'default'    => [
-          'size' => 0,
-        ],
-        'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
-        'selectors'  => [
-          'body:not(.rtl) {{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'right: {{SIZE}}{{UNIT}}',
-          'body.rtl {{WRAPPER}} .mySwiperLogo-modal#slider-modal'       => 'left: {{SIZE}}{{UNIT}}',
-        ],
-        'condition'  => [
-          '_offset_popup_orientation_h' => 'end',
-          'popup_position!'             => '',
-        ],
-      ]
-    );
-
-    $this->add_control(
-      '_offset_popup_orientation_v',
-      [
-        'label'       => esc_html__('Vertical Orientation', 'testimonials-carousel-elementor'),
-        'type'        => Controls_Manager::CHOOSE,
-        'toggle'      => false,
-        'default'     => 'start',
-        'options'     => [
-          'start' => [
-            'title' => esc_html__('Top', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-v-align-top',
-          ],
-          'end'   => [
-            'title' => esc_html__('Bottom', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-v-align-bottom',
-          ],
-        ],
-        'render_type' => 'ui',
-        'condition'   => [
-          'popup_position!' => '',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      '_offset_popup_y',
-      [
-        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'range'      => [
-          'px' => [
-            'min' => -1000,
-            'max' => 1000,
-          ],
-          '%'  => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vh' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vw' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-        ],
-        'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
-        'default'    => [
-          'size' => 0,
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'top: {{SIZE}}{{UNIT}}',
-        ],
-        'condition'  => [
-          '_offset_popup_orientation_v!' => 'end',
-          'popup_position!'              => '',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      '_offset_popup_y_end',
-      [
-        'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'range'      => [
-          'px' => [
-            'min' => -1000,
-            'max' => 1000,
-          ],
-          '%'  => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vh' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-          'vw' => [
-            'min' => -200,
-            'max' => 200,
-          ],
-        ],
-        'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
-        'default'    => [
-          'size' => 0,
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'bottom: {{SIZE}}{{UNIT}}',
-        ],
-        'condition'  => [
-          '_offset_popup_orientation_v' => 'end',
-          'popup_position!'             => '',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_z_index',
-      [
-        'label'     => esc_html__('Z-Index', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::NUMBER,
-        'min'       => 0,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'z-index: {{VALUE}};',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Background::get_type(),
-      [
-        'name'      => 'popup_background',
-        'types'     => ['classic', 'gradient'],
-        'selector'  => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
-        'separator' => 'before',
-      ]
-    );
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'     => 'popup_border',
-        'selector' => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'popup_box_shadow',
-        'selector' => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_width_title',
-      [
-        'label'      => esc_html__('Width Title', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-basic-info' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-        'separator'  => 'before',
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_width_block_title',
-      [
-        'label'      => esc_html__('Width Block Title', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_title_justify',
-      [
-        'label'     => esc_html__('Justified', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'flex-start'    => [
-            'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-start-h',
-          ],
-          'center'        => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-center-h',
-          ],
-          'flex-end'      => [
-            'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-end-h',
-          ],
-          'space-between' => [
-            'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-between-h',
-          ],
-          'space-around'  => [
-            'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-around-h',
-          ],
-          'space-evenly'  => [
-            'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-justify-space-evenly-h',
-          ],
-        ],
-        'default'   => 'center',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'justify-content: {{VALUE}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_title_space',
-      [
-        'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 140,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'gap: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_title_space',
-      [
-        'label'     => esc_html__('Spacing', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 0,
-            'max' => 40,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-basic-info' => 'gap: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_image_position',
-      [
-        'label'     => esc_html__('Images Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'row'         => [
-            'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-start',
-          ],
-          'row-reverse' => [
-            'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-end',
-          ],
-        ],
-        'default'   => 'row',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'flex-direction: {{VALUE}}',
-        ],
-        'separator' => 'before',
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_width_block_image',
-      [
-        'label'      => esc_html__('Width Block Image', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-image' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_images_align',
-      [
-        'label'     => esc_html__('Alignment Images', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'flex-start' => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center'     => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'flex-end'   => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-image' => 'justify-content: {{VALUE}}',
-        ],
-      ]
-    );
-    $this->add_responsive_control(
-      'popup_width_images',
-      [
-        'label'      => esc_html__('Width Images', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_height_images',
-      [
-        'label'      => esc_html__('Height Images', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'height: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'     => 'popup_image_border',
-        'selector' => '{{WRAPPER}} .slider-modal .slide-logo-image img',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_image_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'popup_image_box_shadow',
-        'selector' => '{{WRAPPER}} .slider-modal .slide-logo-image img',
-      ]
+        '_offset_popup_x_end',
+        [
+            'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'range'      => [
+                'px' => [
+                    'min' => -1000,
+                    'max' => 1000,
+                ],
+                '%'  => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vw' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vh' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+            ],
+            'default'    => [
+                'size' => 0,
+            ],
+            'size_units' => ['px', '%', 'em', 'rem', 'vw', 'vh', 'custom'],
+            'selectors'  => [
+                'body:not(.rtl) {{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'right: {{SIZE}}{{UNIT}}',
+                'body.rtl {{WRAPPER}} .mySwiperLogo-modal#slider-modal'       => 'left: {{SIZE}}{{UNIT}}',
+            ],
+            'condition'  => [
+                '_offset_popup_orientation_h' => 'end',
+                'popup_position!'             => '',
+            ],
+        ]
     );
 
     $this->add_control(
-      'popup_name_color',
-      [
-        'label'     => esc_html__('Name color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal-container .slide-logo-title' => 'color: {{VALUE}};',
-        ],
-        'separator' => 'before',
-      ]
+        '_offset_popup_orientation_v',
+        [
+            'label'       => esc_html__('Vertical Orientation', 'testimonials-carousel-elementor'),
+            'type'        => Controls_Manager::CHOOSE,
+            'toggle'      => false,
+            'default'     => 'start',
+            'options'     => [
+                'start' => [
+                    'title' => esc_html__('Top', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-v-align-top',
+                ],
+                'end'   => [
+                    'title' => esc_html__('Bottom', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-v-align-bottom',
+                ],
+            ],
+            'render_type' => 'ui',
+            'condition'   => [
+                'popup_position!' => '',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        '_offset_popup_y',
+        [
+            'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'range'      => [
+                'px' => [
+                    'min' => -1000,
+                    'max' => 1000,
+                ],
+                '%'  => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vh' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vw' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+            ],
+            'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
+            'default'    => [
+                'size' => 0,
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'top: {{SIZE}}{{UNIT}}',
+            ],
+            'condition'  => [
+                '_offset_popup_orientation_v!' => 'end',
+                'popup_position!'              => '',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        '_offset_popup_y_end',
+        [
+            'label'      => esc_html__('Offset', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'range'      => [
+                'px' => [
+                    'min' => -1000,
+                    'max' => 1000,
+                ],
+                '%'  => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vh' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+                'vw' => [
+                    'min' => -200,
+                    'max' => 200,
+                ],
+            ],
+            'size_units' => ['px', '%', 'em', 'rem', 'vh', 'vw', 'custom'],
+            'default'    => [
+                'size' => 0,
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'bottom: {{SIZE}}{{UNIT}}',
+            ],
+            'condition'  => [
+                '_offset_popup_orientation_v' => 'end',
+                'popup_position!'             => '',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_z_index',
+        [
+            'label'     => esc_html__('Z-Index', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::NUMBER,
+            'min'       => 0,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo-modal#slider-modal' => 'z-index: {{VALUE}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Background::get_type(),
+        [
+            'name'      => 'popup_background',
+            'types'     => ['classic', 'gradient'],
+            'selector'  => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
+            'separator' => 'before',
+        ]
     );
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'popup_name_typography',
-        'label'    => esc_html__('Name typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .slider-modal-container .slide-logo-title',
-      ]
+        Group_Control_Border::get_type(),
+        [
+            'name'     => 'popup_border',
+            'selector' => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'popup_box_shadow',
+            'selector' => '{{WRAPPER}} .slider-modal .slider-modal-container.slider-container-background',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_width_title',
+        [
+            'label'      => esc_html__('Width Title', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-basic-info' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+            'separator'  => 'before',
+        ]
     );
     $this->add_responsive_control(
-      'popup_name_align',
-      [
-        'label'     => esc_html__('Alignment Name', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-basic-info' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'popup_width_block_title',
+        [
+            'label'      => esc_html__('Width Block Title', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_title_justify',
+        [
+            'label'     => esc_html__('Justified', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start'    => [
+                    'title' => esc_html__('Flex-Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-start-h',
+                ],
+                'center'        => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-center-h',
+                ],
+                'flex-end'      => [
+                    'title' => esc_html__('Flex-End', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-end-h',
+                ],
+                'space-between' => [
+                    'title' => esc_html__('Space-Between', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-between-h',
+                ],
+                'space-around'  => [
+                    'title' => esc_html__('Space-Around', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-around-h',
+                ],
+                'space-evenly'  => [
+                    'title' => esc_html__('Space-Evenly', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-justify-space-evenly-h',
+                ],
+            ],
+            'default'   => 'center',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'justify-content: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_title_space',
+        [
+            'label'     => esc_html__('Head spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 140,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'gap: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_title_space',
+        [
+            'label'     => esc_html__('Spacing', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 0,
+                    'max' => 40,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-basic-info' => 'gap: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_image_position',
+        [
+            'label'     => esc_html__('Images Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'row'         => [
+                    'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-start',
+                ],
+                'row-reverse' => [
+                    'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-end',
+                ],
+            ],
+            'default'   => 'row',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-main-block' => 'flex-direction: {{VALUE}}',
+            ],
+            'separator' => 'before',
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_width_block_image',
+        [
+            'label'      => esc_html__('Width Block Image', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-image' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_images_align',
+        [
+            'label'     => esc_html__('Alignment Images', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'flex-start' => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'     => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'flex-end'   => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-image' => 'justify-content: {{VALUE}}',
+            ],
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_width_images',
+        [
+            'label'      => esc_html__('Width Images', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_height_images',
+        [
+            'label'      => esc_html__('Height Images', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'height: {{SIZE}}{{UNIT}}',
+            ],
+        ]
+    );
+    $this->add_group_control(
+        Group_Control_Border::get_type(),
+        [
+            'name'     => 'popup_image_border',
+            'selector' => '{{WRAPPER}} .slider-modal .slide-logo-image img',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_image_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logo-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'popup_image_box_shadow',
+            'selector' => '{{WRAPPER}} .slider-modal .slide-logo-image img',
+        ]
+    );
+
+    $this->add_control(
+        'popup_name_color',
+        [
+            'label'     => esc_html__('Name color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal-container .slide-logo-title' => 'color: {{VALUE}};',
+            ],
+            'separator' => 'before',
+        ]
+    );
+    $this->add_group_control(
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'popup_name_typography',
+            'label'    => esc_html__('Name typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .slider-modal-container .slide-logo-title',
+        ]
+    );
+    $this->add_responsive_control(
+        'popup_name_align',
+        [
+            'label'     => esc_html__('Alignment Name', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-basic-info' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_control(
-      'popup_content_color',
-      [
-        'label'     => esc_html__('Content color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal-container .slide-description' => 'color: {{VALUE}};',
-        ],
-      ]
+        'popup_content_color',
+        [
+            'label'     => esc_html__('Content color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal-container .slide-description' => 'color: {{VALUE}};',
+            ],
+        ]
     );
     $this->add_group_control(
-      Group_Control_Typography::get_type(),
-      [
-        'name'     => 'popup_content_typography',
-        'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
-        'selector' => '{{WRAPPER}} .slider-modal-container .slide-description',
-      ]
+        Group_Control_Typography::get_type(),
+        [
+            'name'     => 'popup_content_typography',
+            'label'    => esc_html__('Content typography', 'testimonials-carousel-elementor'),
+            'selector' => '{{WRAPPER}} .slider-modal-container .slide-description',
+        ]
     );
     $this->add_responsive_control(
-      'popup_content_align',
-      [
-        'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'    => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center'  => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'   => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-          'justify' => [
-            'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-justify',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-description' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'popup_content_align',
+        [
+            'label'     => esc_html__('Alignment Content', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'    => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center'  => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'   => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+                'justify' => [
+                    'title' => esc_html__('Justify', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-justify',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-description' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'popup_logo_position',
-      [
-        'label'     => esc_html__('Logo Position', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'row-reverse' => [
-            'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-start',
-          ],
-          'row'         => [
-            'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-order-end',
-          ],
-        ],
-        'default'   => 'row',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logo-block' => 'flex-direction: {{VALUE}}',
-        ],
-        'separator' => 'before',
-      ]
+        'popup_logo_position',
+        [
+            'label'     => esc_html__('Logo Position', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'row-reverse' => [
+                    'title' => esc_html__('Row-Reverse', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-start',
+                ],
+                'row'         => [
+                    'title' => esc_html__('Row', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-order-end',
+                ],
+            ],
+            'default'   => 'row',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logo-block' => 'flex-direction: {{VALUE}}',
+            ],
+            'separator' => 'before',
+        ]
     );
     $this->add_responsive_control(
-      'popup_logo_align',
-      [
-        'label'     => esc_html__('Alignment Logo', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::CHOOSE,
-        'options'   => [
-          'left'   => [
-            'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-left',
-          ],
-          'center' => [
-            'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-center',
-          ],
-          'right'  => [
-            'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
-            'icon'  => 'eicon-text-align-right',
-          ],
-        ],
-        'default'   => 'left',
-        'selectors' => [
-          '{{WRAPPER}} .slider-modal .slide-logotype' => 'text-align: {{VALUE}}',
-        ],
-      ]
+        'popup_logo_align',
+        [
+            'label'     => esc_html__('Alignment Logo', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::CHOOSE,
+            'options'   => [
+                'left'   => [
+                    'title' => esc_html__('Left', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-left',
+                ],
+                'center' => [
+                    'title' => esc_html__('Center', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-center',
+                ],
+                'right'  => [
+                    'title' => esc_html__('Right', 'testimonials-carousel-elementor'),
+                    'icon'  => 'eicon-text-align-right',
+                ],
+            ],
+            'default'   => 'left',
+            'selectors' => [
+                '{{WRAPPER}} .slider-modal .slide-logotype' => 'text-align: {{VALUE}}',
+            ],
+        ]
     );
     $this->add_responsive_control(
-      'popup_width_block_logo',
-      [
-        'label'      => esc_html__('Width Block Logo', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logotype' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
+        'popup_width_block_logo',
+        [
+            'label'      => esc_html__('Width Block Logo', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logotype' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_responsive_control(
-      'popup_width_logo',
-      [
-        'label'      => esc_html__('Width Logo', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::SLIDER,
-        'size_units' => ['px', '%', 'custom'],
-        'default'    => [
-          'unit' => '%',
-        ],
-        'range'      => [
-          '%' => [
-            'min' => 0,
-            'max' => 100,
-          ],
-        ],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logotype img' => 'width: {{SIZE}}{{UNIT}}',
-        ],
-      ]
-    );
-
-    $this->add_group_control(
-      Group_Control_Border::get_type(),
-      [
-        'name'     => 'popup_logo_border',
-        'selector' => '{{WRAPPER}} .slider-modal .slide-logotype img',
-      ]
-    );
-
-    $this->add_responsive_control(
-      'popup_logo_border_radius',
-      [
-        'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
-        'type'       => Controls_Manager::DIMENSIONS,
-        'size_units' => ['px', '%', 'em', 'rem', 'custom'],
-        'selectors'  => [
-          '{{WRAPPER}} .slider-modal .slide-logotype img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-        ],
-      ]
+        'popup_width_logo',
+        [
+            'label'      => esc_html__('Width Logo', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::SLIDER,
+            'size_units' => ['px', '%', 'custom'],
+            'default'    => [
+                'unit' => '%',
+            ],
+            'range'      => [
+                '%' => [
+                    'min' => 0,
+                    'max' => 100,
+                ],
+            ],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logotype img' => 'width: {{SIZE}}{{UNIT}}',
+            ],
+        ]
     );
 
     $this->add_group_control(
-      Group_Control_Box_Shadow::get_type(),
-      [
-        'name'     => 'popup_logo_box_shadow',
-        'selector' => '{{WRAPPER}} .slider-modal .slide-logotype img',
-      ]
+        Group_Control_Border::get_type(),
+        [
+            'name'     => 'popup_logo_border',
+            'selector' => '{{WRAPPER}} .slider-modal .slide-logotype img',
+        ]
+    );
+
+    $this->add_responsive_control(
+        'popup_logo_border_radius',
+        [
+            'label'      => esc_html__('Border Radius', 'testimonials-carousel-elementor'),
+            'type'       => Controls_Manager::DIMENSIONS,
+            'size_units' => ['px', '%', 'em', 'rem', 'custom'],
+            'selectors'  => [
+                '{{WRAPPER}} .slider-modal .slide-logotype img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+            ],
+        ]
+    );
+
+    $this->add_group_control(
+        Group_Control_Box_Shadow::get_type(),
+        [
+            'name'     => 'popup_logo_box_shadow',
+            'selector' => '{{WRAPPER}} .slider-modal .slide-logotype img',
+        ]
     );
     $this->end_controls_section();
 
     // Navigation styles Section
     $this->start_controls_section(
-      'navigation_styles_section',
-      [
-        'label' => __('Navigation styles', 'testimonials-carousel-elementor'),
-        'tab'   => Controls_Manager::TAB_STYLE,
-      ]
+        'navigation_styles_section',
+        [
+            'label' => __('Navigation styles', 'testimonials-carousel-elementor'),
+            'tab'   => Controls_Manager::TAB_STYLE,
+        ]
     );
     $this->add_control(
-      'heading_style_arrows',
-      [
-        'label'     => esc_html__('Arrows', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::HEADING,
-        'separator' => 'before',
-      ]
-    );
-
-    $this->add_control(
-      'arrows_size',
-      [
-        'label'     => esc_html__('Arrows size', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 30,
-            'max' => 60,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next'             => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:after' => 'font-size: calc({{SIZE}}{{UNIT}} / 3);',
-        ],
-      ]
+        'heading_style_arrows',
+        [
+            'label'     => esc_html__('Arrows', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
     );
 
     $this->add_control(
-      'arrows_color',
-      [
-        'label'     => esc_html__('Arrows color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:after' => 'color: {{VALUE}};',
-        ],
-      ]
+        'arrows_size',
+        [
+            'label'     => esc_html__('Arrows size', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 30,
+                    'max' => 60,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next'             => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:after' => 'font-size: calc({{SIZE}}{{UNIT}} / 3);',
+            ],
+        ]
     );
 
     $this->add_control(
-      'arrows_hover_color',
-      [
-        'label'     => esc_html__('Arrows hover color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:hover::after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:hover::after' => 'color: {{VALUE}};',
-        ],
-      ]
+        'arrows_color',
+        [
+            'label'     => esc_html__('Arrows color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:after' => 'color: {{VALUE}};',
+            ],
+        ]
     );
 
     $this->add_control(
-      'heading_style_dots',
-      [
-        'label'     => esc_html__('Pagination', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::HEADING,
-        'separator' => 'before',
-      ]
+        'arrows_hover_color',
+        [
+            'label'     => esc_html__('Arrows hover color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-button-prev:hover::after, {{WRAPPER}} .mySwiperLogo .swiper-logo-button-next:hover::after' => 'color: {{VALUE}};',
+            ],
+        ]
     );
 
     $this->add_control(
-      'dots_size',
-      [
-        'label'     => esc_html__('Dots size', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 5,
-            'max' => 12,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-        ],
-      ]
+        'heading_style_dots',
+        [
+            'label'     => esc_html__('Pagination', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::HEADING,
+            'separator' => 'before',
+        ]
     );
 
     $this->add_control(
-      'active_dot_size',
-      [
-        'label'     => esc_html__('Active dot size', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::SLIDER,
-        'range'     => [
-          'px' => [
-            'min' => 5,
-            'max' => 12,
-          ],
-        ],
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-        ],
-      ]
+        'dots_size',
+        [
+            'label'     => esc_html__('Dots size', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 5,
+                    'max' => 12,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_control(
-      'dots_inactive_color',
-      [
-        'label'     => esc_html__('Dots color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet' => 'background: {{VALUE}};',
-        ],
-      ]
+        'active_dot_size',
+        [
+            'label'     => esc_html__('Active dot size', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::SLIDER,
+            'range'     => [
+                'px' => [
+                    'min' => 5,
+                    'max' => 12,
+                ],
+            ],
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet-active' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+            ],
+        ]
     );
 
     $this->add_control(
-      'dots_inactive_hover_color',
-      [
-        'label'     => esc_html__('Dots hover color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet:hover' => 'background: {{VALUE}};',
-        ],
-      ]
+        'dots_inactive_color',
+        [
+            'label'     => esc_html__('Dots color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet' => 'background: {{VALUE}};',
+            ],
+        ]
     );
 
     $this->add_control(
-      'active_dot_color',
-      [
-        'label'     => esc_html__('Active dot color', 'testimonials-carousel-elementor'),
-        'type'      => Controls_Manager::COLOR,
-        'selectors' => [
-          '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
-        ],
-      ]
+        'dots_inactive_hover_color',
+        [
+            'label'     => esc_html__('Dots hover color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet:hover' => 'background: {{VALUE}};',
+            ],
+        ]
+    );
+
+    $this->add_control(
+        'active_dot_color',
+        [
+            'label'     => esc_html__('Active dot color', 'testimonials-carousel-elementor'),
+            'type'      => Controls_Manager::COLOR,
+            'selectors' => [
+                '{{WRAPPER}} .mySwiperLogo .swiper-logo-pagination .swiper-pagination-bullet-active' => 'background: {{VALUE}};',
+            ],
+        ]
     );
     $this->end_controls_section();
   }
@@ -1985,7 +1985,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  11.6.2
+   * @since  11.7.0
    *
    * @access protected
    */
@@ -1996,22 +1996,22 @@ class TestimonialsCarousel_Logo extends Widget_Base
 
     if (get_plugin_data(ELEMENTOR__FILE__)['Version'] < "3.5.0") {
       $this->add_render_attribute(
-        'my_swiper',
-        [
-          'class'                                    => ['slider-params'],
-          'data-slidestoshow-myswiper'               => esc_attr($settings['slides_to_show']),
-          'data-slidestoshow-myswiper-tablet'        => esc_attr($settings['slides_to_show_tablet']),
-          'data-slidestoshow-myswiper-mobile'        => esc_attr($settings['slides_to_show_mobile']),
-          'data-slidestoscroll-myswiper'             => esc_attr($settings['slides_to_scroll']),
-          'data-slidestoscroll-myswiper-tablet'      => esc_attr($settings['slides_to_scroll_tablet']),
-          'data-slidestoscroll-myswiper-mobile'      => esc_attr($settings['slides_to_scroll_mobile']),
-          'data-navigation-myswiper'                 => esc_attr($settings['navigation']),
-          'data-autoplay-myswiper'                   => esc_attr($settings['autoplay']),
-          'data-autoplayspeed-myswiper'              => esc_attr($settings['autoplay_speed']),
-          'data-sliderloop-myswiper'                 => esc_attr($settings['slider_loop']),
-          'data-showlinetext-myswiper'               => esc_attr($settings['show_line_text']),
-          'data-sliderdisableoninteraction-myswiper' => esc_attr($settings['disable_interaction']),
-        ]
+          'my_swiper',
+          [
+              'class'                                    => ['slider-params'],
+              'data-slidestoshow-myswiper'               => esc_attr($settings['slides_to_show']),
+              'data-slidestoshow-myswiper-tablet'        => esc_attr($settings['slides_to_show_tablet']),
+              'data-slidestoshow-myswiper-mobile'        => esc_attr($settings['slides_to_show_mobile']),
+              'data-slidestoscroll-myswiper'             => esc_attr($settings['slides_to_scroll']),
+              'data-slidestoscroll-myswiper-tablet'      => esc_attr($settings['slides_to_scroll_tablet']),
+              'data-slidestoscroll-myswiper-mobile'      => esc_attr($settings['slides_to_scroll_mobile']),
+              'data-navigation-myswiper'                 => esc_attr($settings['navigation']),
+              'data-autoplay-myswiper'                   => esc_attr($settings['autoplay']),
+              'data-autoplayspeed-myswiper'              => esc_attr($settings['autoplay_speed']),
+              'data-sliderloop-myswiper'                 => esc_attr($settings['slider_loop']),
+              'data-showlinetext-myswiper'               => esc_attr($settings['show_line_text']),
+              'data-sliderdisableoninteraction-myswiper' => esc_attr($settings['disable_interaction']),
+          ]
       );
     }
 
@@ -2028,9 +2028,11 @@ class TestimonialsCarousel_Logo extends Widget_Base
       ?>
 
       <section class="swiper mySwiper myTestimonials mySwiperLogo <?php if (
-        esc_attr($settings['navigation']) === "dots"
-        || esc_attr($settings['navigation']) === "none"
-      ) { ?>slider-arrows-disabled<?php } ?>">
+          esc_attr($settings['navigation']) === "dots"
+          || esc_attr($settings['navigation']) === "none"
+      ) {
+        echo esc_attr('slider-arrows-disabled');
+      } ?>">
         <ul class="swiper-wrapper" role="list">
           <?php
           foreach ($slide as $item) { ?>
@@ -2039,7 +2041,8 @@ class TestimonialsCarousel_Logo extends Widget_Base
                 <div class="slide-logo-main-block">
                   <?php if (isset($item['slide_image'], $item['slide_image']['url']) && !empty($item['slide_image']['url']) && $item['slide_show_image'] === 'yes' && $settings['slider_global_show_images'] === 'yes') { ?>
                     <div class="slide-logo-image">
-                      <img src="<?php echo esc_url($item['slide_image']['url']) ?>" alt="Slide Image">
+                      <img src="<?php echo esc_url($item['slide_image']['url']) ?>"
+                           alt="<?php echo esc_attr('Slide Image'); ?>">
                     </div>
                   <?php } ?>
                   <div class="slide-logo-basic-info">
@@ -2049,7 +2052,7 @@ class TestimonialsCarousel_Logo extends Widget_Base
 
                 <?php if (isset($item['slide_logo'], $item['slide_logo']['url']) && !empty($item['slide_logo']['url']) && $item['slide_show_logo'] === 'yes' && $settings['slider_global_show_logos'] === 'yes') { ?>
                   <div class="slide-logotype">
-                    <img src="<?php echo esc_url($item['slide_logo']['url']) ?>" alt="Logo">
+                    <img src="<?php echo esc_url($item['slide_logo']['url']) ?>" alt="<?php echo esc_attr('Logo'); ?>">
                   </div>
                 <?php } ?>
               </div>
