@@ -9,7 +9,7 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      12.0.0
+ * @since      12.0.1
  * php version 7.4.1
  */
 
@@ -31,30 +31,15 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel widget class.
  *
- * @since 12.0.0
+ * @since 12.0.1
  */
 class TestimonialsCarousel extends Widget_Base
 {
   /**
-   * TestimonialsCarousel constructor.
-   *
-   * @param array $data
-   * @param null  $args
-   *
-   * @throws \Exception
-   */
-  public function __construct($data = [], $args = null)
-  {
-    parent::__construct($data, $args);
-    \TestimonialsCarouselElementor\Testimonials_Carousel_Assets::register();
-    \TestimonialsCarouselElementor\Testimonials_Carousel_Assets::register_style('testimonials-carousel', 'testimonials-carousel.min.css');
-  }
-
-  /**
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -68,7 +53,7 @@ class TestimonialsCarousel extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -82,7 +67,7 @@ class TestimonialsCarousel extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -101,7 +86,7 @@ class TestimonialsCarousel extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -149,7 +134,7 @@ class TestimonialsCarousel extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access protected
    */
@@ -1495,7 +1480,7 @@ class TestimonialsCarousel extends Widget_Base
     );
 
     $this->add_control(
-        'popup_border_width',
+        'popup_slide_block_border_width',
         [
             'label'     => esc_html__('Border width', 'testimonials-carousel-elementor'),
             'type'      => Controls_Manager::SLIDER,
@@ -1512,7 +1497,7 @@ class TestimonialsCarousel extends Widget_Base
     );
 
     $this->add_control(
-        'popup_border_color',
+        'popup_slide_block_border_color',
         [
             'label'     => esc_html__('Border color', 'testimonials-carousel-elementor'),
             'type'      => Controls_Manager::COLOR,
@@ -2071,7 +2056,7 @@ class TestimonialsCarousel extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access protected
    */

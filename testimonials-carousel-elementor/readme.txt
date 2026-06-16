@@ -4,7 +4,7 @@ Tags: elementor, elementor addons, testimonial slider, testimonial carousel, car
 Requires PHP: 7.4.1
 Requires at least: 5.9
 Tested up to: 7.0
-Stable tag: 12.0.0
+Stable tag: 12.0.1
 License: GPLv3
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -77,6 +77,9 @@ Note : This plugin works with Elementor. Make sure you have [Elementor](https://
 24. Reviews testimonial carousel settings
 
 == Changelog ==
+
+= 12.0.1 - 2026-06-16 =
+- Fix: Fix errors that occur when debugging is enabled.
 
 = 12.0.0 - 2026-06-11 =
 - New: Added "Testimonial Quotes Carousel".

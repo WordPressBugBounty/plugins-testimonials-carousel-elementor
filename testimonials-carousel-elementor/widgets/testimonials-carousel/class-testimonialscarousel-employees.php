@@ -9,7 +9,7 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      12.0.0
+ * @since      12.0.1
  * php version 7.4.1
  */
 
@@ -29,32 +29,15 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Employees widget class.
  *
- * @since 12.0.0
+ * @since 12.0.1
  */
 class TestimonialsCarousel_Employees extends Widget_Base
 {
   /**
-   * TestimonialsCarousel_Employees constructor.
-   *
-   * @param array $data
-   * @param null  $args
-   *
-   * @throws \Exception
-   */
-  public function __construct($data = [], $args = null)
-  {
-    parent::__construct($data, $args);
-    wp_register_style('swiper', plugins_url('/assets/css/swiper-bundle.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
-    wp_register_style('testimonials-carousel-employees', plugins_url('/assets/css/testimonials-carousel-employees.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
-
-    \TestimonialsCarouselElementor\Testimonials_Carousel_Assets::register();
-  }
-
-  /**
    * Retrieve the widget name.
    *
    * @return string Widget name.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -68,7 +51,7 @@ class TestimonialsCarousel_Employees extends Widget_Base
    * Retrieve the widget title.
    *
    * @return string Widget title.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -82,7 +65,7 @@ class TestimonialsCarousel_Employees extends Widget_Base
    * Retrieve the widget icon.
    *
    * @return string Widget icon.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -101,7 +84,7 @@ class TestimonialsCarousel_Employees extends Widget_Base
    * When multiple categories passed, Elementor uses the first one.
    *
    * @return array Widget categories.
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access public
    *
@@ -159,7 +142,7 @@ class TestimonialsCarousel_Employees extends Widget_Base
    *
    * Adds different input fields to allow the user to change and customize the widget settings.
    *
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access protected
    */
@@ -1363,7 +1346,7 @@ class TestimonialsCarousel_Employees extends Widget_Base
    *
    * Written in PHP and used to generate the final HTML.
    *
-   * @since  12.0.0
+   * @since  12.0.1
    *
    * @access protected
    */

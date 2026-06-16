@@ -9,7 +9,7 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      12.0.0
+ * @since      12.0.1
  * php version 7.4.1
  */
 
@@ -32,28 +32,10 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Quotes widget class.
  *
- * @since 12.0.0
+ * @since 12.0.1
  */
 class TestimonialsCarousel_Quotes extends Widget_Base
 {
-  /**
-   * Constructor.
-   */
-  public function __construct($data = [], $args = null)
-  {
-    parent::__construct($data, $args);
-
-    wp_register_style('owl-carousel', plugins_url('/assets/css/owl.carousel.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
-    wp_register_style('testimonials-carousel-quotes', plugins_url('/assets/css/testimonials-carousel-quotes.min.css', TESTIMONIALS_CAROUSEL_ELEMENTOR), [], TESTIMONIALS_VERSION);
-
-    wp_register_script('owl-carousel', plugins_url('/assets/js/owl.carousel.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), ['jquery'], TESTIMONIALS_VERSION, true);
-    wp_register_script('testimonials-carousel-quotes-handler', plugins_url('/assets/js/testimonials-carousel-quotes-handler.min.js', TESTIMONIALS_CAROUSEL_ELEMENTOR), ['jquery', 'owl-carousel'], TESTIMONIALS_VERSION, true);
-
-    if (!function_exists('get_plugin_data')) {
-      require_once(ABSPATH . 'wp-admin/includes/plugin.php');
-    }
-  }
-
   /**
    * Widget name.
    */
@@ -1667,6 +1649,12 @@ class TestimonialsCarousel_Quotes extends Widget_Base
       $carousel_speed = 800;
     }
 
+    $slides_to_show = \TestimonialsCarouselElementor\Testimonials_Carousel_Assets::get_responsive_setting(
+        $settings,
+        'slides_to_show',
+        '2'
+    );
+
     ?>
 
     <section class="tcq-testimonial-area">
@@ -1678,9 +1666,9 @@ class TestimonialsCarousel_Quotes extends Widget_Base
              data-autoplay-timeout="<?php echo esc_attr($settings['autoplay_timeout']); ?>"
              data-margin="<?php echo esc_attr($carousel_margin); ?>"
              data-smart-speed="<?php echo esc_attr($carousel_speed); ?>"
-             data-slides-desktop="<?php echo esc_attr($settings['slides_to_show']); ?>"
-             data-slides-tablet="<?php echo esc_attr($settings['slides_to_show_tablet']); ?>"
-             data-slides-mobile="<?php echo esc_attr($settings['slides_to_show_mobile']); ?>"
+             data-slides-desktop="<?php echo esc_attr($slides_to_show['desktop']); ?>"
+             data-slides-tablet="<?php echo esc_attr($slides_to_show['tablet']); ?>"
+             data-slides-mobile="<?php echo esc_attr($slides_to_show['mobile']); ?>"
              data-dots="<?php echo esc_attr($show_dots ? 'yes' : 'no'); ?>"
              data-nav="<?php echo esc_attr($show_arrows ? 'yes' : 'no'); ?>"
         >
