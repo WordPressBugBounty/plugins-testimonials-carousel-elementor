@@ -9,7 +9,7 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      12.0.1
+ * @since      13.0.0
  * php version 7.4.1
  */
 
@@ -25,7 +25,7 @@ defined('ABSPATH') || die();
  *
  * Main Plugin class
  *
- * @since 12.0.1
+ * @since 13.0.0
  */
 class Widgets
 {
@@ -33,7 +33,7 @@ class Widgets
   /**
    * Instance
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access private
    * @static
    *
@@ -47,7 +47,7 @@ class Widgets
    * Ensures only one instance of the class is loaded or can be loaded.
    *
    * @return Plugin An instance of the class.
-   * @since  12.0.1
+   * @since  13.0.0
    * @access public
    *
    */
@@ -65,7 +65,7 @@ class Widgets
    *
    * Load widgets files
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access private
    */
   private function include_widgets_files()
@@ -90,6 +90,9 @@ class Widgets
     // Sections With Carousels
     require_once 'widgets/section-with-carousel/class-section-with-cube.php';
     require_once 'widgets/section-with-carousel/class-section-with-cube-360.php';
+
+    // Interactive Testimonials
+    require_once 'widgets/testimonials-interactive/class-expandable-testimonials.php';
   }
 
   /**
@@ -97,7 +100,7 @@ class Widgets
    *
    * Load widgets templates files
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access private
    */
   private function include_widgets_templates_files()
@@ -111,7 +114,7 @@ class Widgets
    *
    * Load widgets templates controls
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access private
    */
   private function include_widgets_templates_controls()
@@ -125,7 +128,7 @@ class Widgets
    *
    * Register new Elementor widgets.
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access public
    */
   public function register_widgets()
@@ -161,6 +164,9 @@ class Widgets
     // Register the plugin widget Section With Carousel.
     $widgets_manager->register(new Widgets\Section_With_Cube());
     $widgets_manager->register(new Widgets\Section_With_Cube_360());
+
+    // Register the plugin widget Interactive Testimonials.
+    $widgets_manager->register(new Widgets\Expandable_Testimonials());
   }
 
   /**
@@ -168,7 +174,7 @@ class Widgets
    *
    * Register plugin action hooks and filters
    *
-   * @since  12.0.1
+   * @since  13.0.0
    * @access public
    */
   public function __construct()

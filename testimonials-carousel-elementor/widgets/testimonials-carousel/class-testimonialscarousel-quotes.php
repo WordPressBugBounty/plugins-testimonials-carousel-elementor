@@ -9,7 +9,7 @@
  * @copyright  2026 UAPP GROUP
  * @license    https://opensource.org/licenses/GPL-3.0 GPL-3.0-only
  * @link
- * @since      12.0.1
+ * @since      13.0.0
  * php version 7.4.1
  */
 
@@ -32,7 +32,7 @@ defined('ABSPATH') || die();
 /**
  * TestimonialsCarousel_Quotes widget class.
  *
- * @since 12.0.1
+ * @since 13.0.0
  */
 class TestimonialsCarousel_Quotes extends Widget_Base
 {

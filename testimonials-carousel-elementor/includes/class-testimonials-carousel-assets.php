@@ -29,7 +29,6 @@ class Testimonials_Carousel_Assets
   {
     add_action('wp_enqueue_scripts', [__CLASS__, 'register'], 5);
     add_action('admin_enqueue_scripts', [__CLASS__, 'register'], 5);
-    add_action('elementor/editor/before_enqueue_scripts', [__CLASS__, 'register'], 5);
   }
 
   /**
@@ -44,7 +43,7 @@ class Testimonials_Carousel_Assets
     self::$registered = true;
 
     $plugin_file = TESTIMONIALS_CAROUSEL_ELEMENTOR;
-    $version     = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '12.0.1';
+    $version     = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '13.0.0';
 
     if (!wp_script_is('swiper', 'registered')) {
       wp_register_script(
@@ -88,6 +87,7 @@ class Testimonials_Carousel_Assets
 
     self::register_widget_styles();
     self::register_quotes_assets();
+    self::register_expandable_testimonials_assets();
     self::register_swiper_v11();
   }
 
@@ -116,12 +116,37 @@ class Testimonials_Carousel_Assets
   }
 
   /**
+   * Expandable Testimonials assets (standalone widget, no Swiper dependency).
+   */
+  private static function register_expandable_testimonials_assets()
+  {
+    $plugin_file = TESTIMONIALS_CAROUSEL_ELEMENTOR;
+    $fallback    = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '13.0.0';
+    $css_path    = plugin_dir_path($plugin_file) . 'assets/css/expandable-testimonials.min.css';
+    $js_path     = plugin_dir_path($plugin_file) . 'assets/js/expandable-testimonials.min.js';
+    $css_version = is_readable($css_path) ? (string)filemtime($css_path) : $fallback;
+    $js_version  = is_readable($js_path) ? (string)filemtime($js_path) : $fallback;
+
+    self::register_style('expandable-testimonials', 'expandable-testimonials.min.css', $css_version);
+
+    if (!wp_script_is('expandable-testimonials-handler', 'registered')) {
+      wp_register_script(
+        'expandable-testimonials-handler',
+        plugins_url('/assets/js/expandable-testimonials.min.js', $plugin_file),
+        ['jquery'],
+        $js_version,
+        true
+      );
+    }
+  }
+
+  /**
    * Owl Carousel assets for the Quotes widget.
    */
   private static function register_quotes_assets()
   {
     $plugin_file = TESTIMONIALS_CAROUSEL_ELEMENTOR;
-    $version     = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '12.0.1';
+    $version     = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '13.0.0';
 
     if (!wp_style_is('owl-carousel', 'registered')) {
       wp_register_style(
@@ -188,17 +213,21 @@ class Testimonials_Carousel_Assets
   /**
    * @param string $css_file Filename under assets/css/.
    */
-  public static function register_style($handle, $css_file)
+  public static function register_style($handle, $css_file, $version = null)
   {
     if (wp_style_is($handle, 'registered')) {
       return;
+    }
+
+    if ($version === null) {
+      $version = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '13.0.0';
     }
 
     wp_register_style(
       $handle,
       plugins_url('/assets/css/' . $css_file, TESTIMONIALS_CAROUSEL_ELEMENTOR),
       [],
-      defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '12.0.1'
+      $version
     );
   }
 
@@ -207,7 +236,7 @@ class Testimonials_Carousel_Assets
    */
   public static function register_swiper_v11()
   {
-    $version = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '12.0.1';
+    $version = defined('TESTIMONIALS_VERSION') ? TESTIMONIALS_VERSION : '13.0.0';
 
     wp_register_style(
       'swiper',
